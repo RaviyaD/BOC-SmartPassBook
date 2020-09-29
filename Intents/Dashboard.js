@@ -13,6 +13,7 @@ class Dashboard extends Component{
                 <Text onPress={() => this.props.navigation.navigate('AccountSettings',{
                     AccountNo: 88299878
                 })}>Account settings</Text>
+                <Text onPress={() => this.props.navigation.navigate('TermsConditions')}>Terms&condition</Text>
             </View>
         )
     }
