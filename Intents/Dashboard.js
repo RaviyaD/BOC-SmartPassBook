@@ -9,13 +9,17 @@ class Dashboard extends Component{
     render(){
         return (
             <View styles={styles.container}>
-                <Text> Account list eka sata sata gaala enna one..</Text>
+                <Text> board</Text>
+                <Text onPress={() => this.props.navigation.navigate('AccountSettings',{
+                    AccountNo: 88299878
+                })}>Account settings</Text>
             </View>
         )
     }
 }
 const styles = StyleSheet.create({
     container: {
+        flex:1,
         textAlign: 'center'
     }
 });

@@ -7,7 +7,7 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    ImageBackground,
+    ImageBackground, ToastAndroid,
 } from 'react-native';
 
 
@@ -16,6 +16,7 @@ class Login extends Component {
     state = {
         email: '',
         password: '',
+        usernameError: '',
     };
 
     handleEmail = (text) => {
@@ -25,10 +26,25 @@ class Login extends Component {
         this.setState({password: text});
     };
     login = (email, pass) => {
+        let login = this.validateUsername();
         this.props.navigation.navigate('Dashboard');
     };
     toRegisterIntent = (email, pass) => {
         this.props.navigation.navigate('Register');
+    };
+
+    validateUsername = () => {
+        if (this.state.email !== 'raveen97' || this.state.password !== '12345') {
+            this.setState({
+                usernameError: 'Username or Password is wrong!',
+            });
+            return false;
+        } else {
+            this.setState({
+                usernameError: '',
+            });
+            return true;
+        }
     };
 
     render() {
@@ -50,8 +66,10 @@ class Login extends Component {
                     <TextInput style={styles.input}
                                underlineColorAndroid="transparent"
                                autoCapitalize="none"
+                               type='password'
+                               secureTextEntry={true}
                                onChangeText={this.handlePassword}/>
-
+                    <Text style={styles.errorMsg}>{this.state.usernameError}</Text>
                     <TouchableOpacity
                         style={styles.submitButton}
                         onPress={
@@ -70,29 +88,32 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
+    },
+    errorMsg: {
+        color: '#800000',
     },
     bocText: {
         fontWeight: 'bold',
         fontSize: 60,
         textAlign: 'center',
-        textShadowColor:'#000000',
+        textShadowColor: '#000000',
         color: '#ffd800',
-        textShadowOffset:{width: 3, height:3},
-        textShadowRadius:10
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 10,
     },
-    passBookText:{
+    passBookText: {
         fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'center',
-        fontStyle: 'italic'
+        fontStyle: 'italic',
     },
     loginText: {
         fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'center',
         fontFamily: 'sans-serif-condensed',
-        paddingTop:30
+        paddingTop: 30,
     },
     inputUn: {
         textAlign: 'center',
@@ -101,7 +122,7 @@ const styles = StyleSheet.create({
     },
     inputPw: {
         textAlign: 'center',
-        paddingTop: 35,
+        paddingTop: 20,
         fontSize: 15,
     },
     input: {
@@ -118,6 +139,7 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 15,
         height: 40,
+        width:150,
         borderRadius: 10,
     },
     submitButtonText: {

@@ -5,14 +5,14 @@ import {
     Text,
 } from 'react-native';
 
-class Register extends Component{
+class TermsConditions extends Component{
     render(){
         return (
             <View>
-                <Text> </Text>
+                <Text> Terms & conditions page loading</Text>
             </View>
         )
     }
 }
 
-export default Register;
+export default TermsConditions;
