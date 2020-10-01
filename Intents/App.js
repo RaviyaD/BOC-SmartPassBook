@@ -8,8 +8,8 @@
 
 import React from 'react';
 import Login from './Login';
-import Register from './Register';
 import ContactUs from "./ContactUs";
+import Registration from './Registration';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator} from 'react-navigation-stack';
 import Dashboard from './Dashboard';
@@ -17,6 +17,8 @@ import AccountList from "./AccountList";
 import Interest from "./Interest";
 import Drawer from "./Drawer";
 import NavBar from "./NavBar";
+import AccountSettings from './AccountSettings';
+import TermsConditions from './Terms&Conditions';
 
 const App = createStackNavigator({
         Login: { screen: Login,
@@ -24,7 +26,7 @@ const App = createStackNavigator({
                 headerShown: false
             },
         } ,
-        Register: { screen: Register,
+        Register: { screen: Registration,
             navigationOptions: {
                 headerShown: false
             },
@@ -55,6 +57,16 @@ const App = createStackNavigator({
             },
         },
         NavBar: { screen: NavBar,
+            navigationOptions: {
+                headerShown: false
+            },
+        },
+        AccountSettings: { screen: AccountSettings,
+            navigationOptions: {
+                headerShown: false
+            },
+        },
+        TermsConditions: { screen: TermsConditions,
             navigationOptions: {
                 headerShown: false
             },
