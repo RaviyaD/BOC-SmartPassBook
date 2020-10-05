@@ -19,6 +19,8 @@ import Drawer from "./Drawer";
 import NavBar from "./NavBar";
 import AccountSettings from './AccountSettings';
 import TermsConditions from './Terms&Conditions';
+import FaqMain from "./FAQ/FaqMain";
+
 
 const App = createStackNavigator({
         Login: { screen: Login,
@@ -42,6 +44,11 @@ const App = createStackNavigator({
             },
         },
         ContactUs: { screen: ContactUs,
+            navigationOptions: {
+                headerShown: false
+            },
+        },
+        FAQ: { screen: FaqMain,
             navigationOptions: {
                 headerShown: false
             },
