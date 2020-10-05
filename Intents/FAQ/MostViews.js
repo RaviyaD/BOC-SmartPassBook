@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import {
     Platform,
-    LayoutAnimation,
     StyleSheet,
     View,
     Text,
-    ScrollView,
-    UIManager,
     TouchableOpacity,
 } from 'react-native';
 
