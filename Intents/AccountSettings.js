@@ -2,13 +2,16 @@ import React from 'react';
 import {Component} from 'react';
 import {
     View,
-    Text, TouchableOpacity, TextInput, ImageBackground, StyleSheet,
+    Text, TouchableOpacity, TextInput, ImageBackground, StyleSheet, DrawerLayoutAndroid,
 } from 'react-native';
+import NavBar from "./NavBar";
 
 class AccountSettings extends Component {
     state = {
         nickname: '',
-        nicknameError: ''
+        nicknameError: '',
+        drawerPosition:'left',
+        setDrawerPosition:'left'
     };
     toDashboard = () => {
         if (this.validateName()) {
@@ -41,11 +44,33 @@ class AccountSettings extends Component {
             return true;
         }
     };
+    changeDrawerPosition = () => {
+        if (this.state.drawerPosition === 'left') {
+            this.setState({
+                setDrawerPosition:'right'
+            })
+        } else {
+            this.setState({
+                setDrawerPosition:'left'
+            })
+        }
+    };
+
+    navigationView = () => (
+        <View style={styles.navigationContainer}>
+            <NavBar navigation={this.props.navigation} />
+        </View>
+    );
 
     render() {
+
         return (
+            <DrawerLayoutAndroid
+                drawerWidth={300}
+                drawerPosition={this.state.drawerPosition}
+                renderNavigationView={() => this.navigationView()}>
             <View style={styles.container}>
-                <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
+                <ImageBackground style={styles.backgroundImage} source={require('../assets/wallpaper.jpg')}>
                     <Text style={styles.topic}> Account Settings</Text>
                     <Text style={styles.AccText}> Account No:
                         {this.props.navigation.state.params.AccountNo}
@@ -67,6 +92,7 @@ class AccountSettings extends Component {
                     </TouchableOpacity>
                 </ImageBackground>
             </View>
+            </DrawerLayoutAndroid>
         );
     }
 }

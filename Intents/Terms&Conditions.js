@@ -2,13 +2,16 @@ import React from 'react';
 import {Component} from 'react';
 import {
     View,
-    Text, ImageBackground, StyleSheet, TextInput,ScrollView
+    Text, ImageBackground, StyleSheet, TextInput, ScrollView, DrawerLayoutAndroid
 } from 'react-native';
 import tc from '../assets/const';
+import NavBar from "./NavBar";
 
 class TermsConditions extends Component {
     state = {
-        search : ''
+        search : '',
+        drawerPosition:'left',
+        setDrawerPosition:'left'
     };
 
     handleSearch = (text) =>{
@@ -17,8 +20,29 @@ class TermsConditions extends Component {
         })
     };
 
+    changeDrawerPosition = () => {
+        if (this.state.drawerPosition === 'left') {
+            this.setState({
+                setDrawerPosition:'right'
+            })
+        } else {
+            this.setState({
+                setDrawerPosition:'left'
+            })
+        }
+    };
+
+    navigationView = () => (
+        <View style={styles.navigationContainer}>
+            <NavBar navigation={this.props.navigation} />
+        </View>
+    );
     render() {
         return (
+            <DrawerLayoutAndroid
+                drawerWidth={300}
+                drawerPosition={this.state.drawerPosition}
+                renderNavigationView={() => this.navigationView()}>
             <View style={styles.container}>
                 <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
                     <Text style={styles.topic}> Terms & conditions </Text>
@@ -32,6 +56,7 @@ class TermsConditions extends Component {
                     </ScrollView>
                 </ImageBackground>
             </View>
+            </DrawerLayoutAndroid>
         );
     }
 }

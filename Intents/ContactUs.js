@@ -1,10 +1,9 @@
 import React, {Component, useState} from 'react';
-import {View, StyleSheet, Button, DrawerLayoutAndroid, Text, ImageBackground} from 'react-native';
-import {ImageButton} from 'react-native-image-button-text';
+import {View, StyleSheet, Button, DrawerLayoutAndroid, Text, ImageBackground, TouchableHighlight, Image} from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
 import NavBar from "./NavBar";
 
-const ContactUs = () => {
-
+const ContactUs = ({navigation}) => {
     const [drawerPosition, setDrawerPosition] = useState('left');
     const changeDrawerPosition = () => {
         if (drawerPosition === 'left') {
@@ -16,133 +15,70 @@ const ContactUs = () => {
 
     const navigationView = (
         <View style={styles.navigationContainer}>
-            <NavBar />
+            <NavBar navigation={navigation} />
         </View>
     );
-        return (
-            <DrawerLayoutAndroid
-                drawerWidth={300}
-                drawerPosition={drawerPosition}
-                renderNavigationView={() => navigationView}>
+
+    return (
+        <DrawerLayoutAndroid
+            drawerWidth={300}
+            drawerPosition={drawerPosition}
+            renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
-                    <View style={styles.innercontainer}>
-                        <View style={styles.title}>
-                        <Text style={styles.titleText}>CONTACT OUR TEAM</Text>
-                    </View>
-                    <Text style={styles.accName}>OUR EMERGENCY HELP</Text>
-                    <View style={styles.divider} />
-                    <Text style={styles.accNum}>+94 2233445</Text>
-                    <Text style={styles.accName}>OUR ACCOUNTS TEAM</Text>
-                    <View style={styles.divider} />
-                    <Text style={styles.accNum}>+94 2233446</Text>
-                    <Text style={styles.accName}>OUR HR TEAM</Text>
-                    <View style={styles.divider} />
-                    <Text style={styles.accNum}>+94 2233447</Text>
-                    <View style={styles.addressBlock}>
-                        <Text style={{fontSize: 25, margin: '5%'}}>VISIT US</Text>
-                        <Text style={{fontSize: 20, marginLeft: '5%'}}>20A</Text>
-                        <Text style={{fontSize: 20, marginLeft: '5%'}}>BOC ROAD</Text>
-                        <Text style={{fontSize: 20, marginLeft: '5%'}}>COL-01</Text>
-                    </View>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            marginTop: 10,
-                            height: '80%',
-                            width: '80%',
-                        }}>
-                        <ImageButton
-                            style={{marginTop: 10, borderColor: '#000000'}}
-                            width={'40%'}
-                            height={'30%'}
-                            text=""
-                            source={require('../assets/twitter-logo.jpg')}
-                        />
-                        <ImageButton
-                            style={{marginTop: 10, borderColor: '#000000'}}
-                            width={'40%'}
-                            height={'30%'}
-                            text=""
-                            source={require('../assets/facebook-logo.png')}
-                        />
-                        <ImageButton
-                            style={{marginTop: 10, borderColor: '#000000'}}
-                            width={'40%'}
-                            height={'30%'}
-                            text=""
-                            source={require('../assets/insta-logo.jpg')}
-                        />
-                    </View>
-                    </View>
-                </ImageBackground>
+                <Text style={{color:'white', fontSize:35, marginTop:'10%', marginLeft:'25%'}}>Get In Touch</Text>
+                <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, marginLeft:'35%', borderWidth: 2, marginTop:'5%'}} source={require('../assets/tele.png')}/>
+            </View>
+            <View>
+                <View style={{marginLeft:'45%', marginTop:'3%'}}>
+                    <Icon name="old-phone" size={25} color="#ff0055" />
                 </View>
-            </DrawerLayoutAndroid>
-        );
+                <View style={{marginLeft:'25%', marginTop:'2%'}}>
+                    <Text style={{fontSize:15}}><Text style={{color:'#ffcc99', fontWeight: 'bold'}}>{'\u2B24'}</Text> <Text style={{color:'black', fontWeight: 'bold'}}>OUR EMERGENCY HELP</Text> </Text>
+                    <Text style={{marginLeft:'15%', fontSize:15}}>+94 2233445</Text>
+                </View>
+                <View style={{marginLeft:'25%', marginTop:'2%'}}>
+                    <Text style={{fontSize:15}}><Text style={{color:'#ffcc99'}}>{'\u2B24'}</Text> <Text style={{color:'black', fontWeight: 'bold'}}>OUR ACCOUNTS TEAM </Text> </Text>
+                    <Text style={{marginLeft:'15%', fontSize:15}}>+94 2233446</Text>
+                </View>
+                <View style={{marginLeft:'25%', marginTop:'2%'}}>
+                    <Text style={{fontSize:15}}><Text style={{color:'#ffcc99'}}>{'\u2B24'}</Text> <Text style={{color:'black', fontWeight: 'bold'}}>OUR HR TEAM </Text> </Text>
+                    <Text style={{marginLeft:'15%', fontSize:15}}>+94 2233447</Text>
+                </View>
+            </View>
+            <View>
+                <View style={{marginLeft:'45%', marginTop:'3%'}}>
+                    <Icon name="location-pin" size={25} color="#ff0055" />
+                </View>
+                <View style={{ marginTop:'2%'}}>
+                    <Text style={{fontSize: 15, fontWeight: 'bold',marginLeft:'25%'}}>REGISTERED HEAD OFFICE:</Text>
+                    <Text style={{fontSize: 13,marginLeft:'35%'}}>Bank Of Ceylon,</Text>
+                    <Text style={{fontSize: 13,marginLeft:'35%'}}>No.1,BOC Square,</Text>
+                    <Text style={{fontSize: 13,marginLeft:'35%'}}>Bank of Ceylon Mawatha,</Text>
+                    <Text style={{fontSize: 13,marginLeft:'35%'}}>Colombo 01</Text>
+                    <Text style={{fontSize: 13,marginLeft:'35%'}}>Sri Lanka</Text>
+                </View>
+            </View>
+            <View style={{flex: 1, flexDirection: 'column', justifyContent:'flex-end', marginTop:'6%', marginLeft:'87%'}}>
+                    <View style={{width:50, height:50, borderWidth:2,borderRadius: 30}}>
+                        <Image style={{width:47, height:47, borderWidth:3,borderRadius: 30}} source={require('../assets/twitter-logo.jpg')}/>
+                    </View>
+                    <View style={{width: 50, height: 50, borderWidth:2, borderRadius: 30}}>
+                        <Image style={{width:47, height:47, borderWidth:3,borderRadius: 30}} source={require('../assets/facebook-logo.png')}/>
+                    </View>
+                    <View style={{width: 50, height: 50, borderWidth:2, borderRadius: 30}}>
+                        <Image style={{width:46, height:45, borderWidth:3,borderRadius: 30}} source={require('../assets/insta-logo.jpg')}/>
+                    </View>
+            </View>
+        </DrawerLayoutAndroid>
+    );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height:'35%',
+        width: '100%',
         backgroundColor: '#faee52',
     },
-    innercontainer: {
-        width: '95%',
-        height: '95%',
-        backgroundColor: 'white',
-        marginTop: 20,
-    },
-    navbutton: {
-        flex: 1,
-        position: 'absolute',
-        top: 0,
-        margin: 30,
-    },
-    button: {
-        backgroundColor: '#841584',
-    },
-    title: {
-        color: '#000000',
-        top: 5,
-        marginLeft: '15%',
-        marginTop: '20%',
-    },
-    titleText: {
-        fontSize: 30,
-        fontWeight: 'bold',
-    },
-    accName: {
-        fontSize: 20,
-        marginTop: '5%',
-        marginLeft: '10%',
-        fontWeight: 'bold',
-        color: '#000000',
-    },
-    divider: {
-        borderWidth: 2,
-        width: '80%',
-        marginLeft: '10%',
-        borderColor: '#ff9933',
-    },
-    accNum: {
-        fontSize: 20,
-        marginLeft: '10%',
-    },
-    addressBlock: {
-        width: '50%',
-        height: '20%',
-        borderColor: '#ff9933',
-        backgroundColor: '#ffcc00',
-        marginLeft: '10%',
-        marginTop: '10%',
-    },
-    backgroundImage: {
-        flex: 1,
-        height: '100%',
-        width: '100%',
-        resizeMode: 'stretch',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
 });
+
 export default ContactUs;
