@@ -19,6 +19,8 @@ import Drawer from "./Drawer";
 import NavBar from "./NavBar";
 import AccountSettings from './AccountSettings';
 import TermsConditions from './Terms&Conditions';
+import ChangePassword from "./ChangePassword";
+import TransactionHistory from "./TransactionHistory";
 
 const App = createStackNavigator({
         Login: { screen: Login,
@@ -26,7 +28,7 @@ const App = createStackNavigator({
                 headerShown: false
             },
         } ,
-        Register: { screen: Registration,
+        Register: { screen: TransactionHistory,
             navigationOptions: {
                 headerShown: false
             },
