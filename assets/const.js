@@ -1,4 +1,4 @@
-const tc ='1.Purchases\n' +
+const tc ='1. Purchases\n' +
     'If you wish to purchase any product or service made available through the Service ("Purchase"),\n' +
     'you may be asked to supply certain information relevant to your Purchase including, without\n' +
     'limitation, your …\n' +
@@ -10,7 +10,7 @@ const tc ='1.Purchases\n' +
     'The Subscriptions section is for SaaS businesses. For the full disclosure section, create your\n' +
     'own Terms and Conditions.\n' +
     '\n'+
-    '2.Content\n' +
+    '2. Content\n' +
     'Our Service allows you to post, link, store, share and otherwise make available certain information,\n' +
     'text, graphics, videos, or other material ("Content"). You are responsible for the …\n' +
     'The Content section is for businesses that allow users to create, edit, share, make content on\n' +
@@ -24,7 +24,7 @@ const tc ='1.Purchases\n' +
     'damage or loss caused or alleged to be caused by or in connection with use of or reliance on any\n' +
     'such content, goods or services available on or through any such web sites or services.\n' +
     '\n'+
-    '3.Changes\n' +
+    '3. Changes\n' +
     'We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a\n' +
     'revision is material we will try to provide at least 30 (change this) days\' notice prior to any new terms\n' +
     'taking effect. What constitutes a material change will be determined at our sole discretion.\n' +
