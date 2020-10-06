@@ -1,88 +1,88 @@
 import React,{useState} from 'react';
-
+import Dash from 'react-native-dash';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
     StyleSheet,
     View,
     Text,
     TouchableOpacity,
-    ImageBackground,
     DrawerLayoutAndroid
 } from 'react-native';
 import NavBar from "./NavBar";
 
-const AccountList = () => {
-        const [drawerPosition, setDrawerPosition] = useState('left');
-        const changeDrawerPosition = () => {
-            if (drawerPosition === 'left') {
-                setDrawerPosition('right');
-            } else {
-                setDrawerPosition('left');
-            }
-        };
+const AccountList = ({navigation}) => {
+    const [drawerPosition, setDrawerPosition] = useState('left');
+    const changeDrawerPosition = () => {
+        if (drawerPosition === 'left') {
+            setDrawerPosition('right');
+        } else {
+            setDrawerPosition('left');
+        }
+    };
 
-        const navigationView = (
-            <View style={styles.navigationContainer}>
-                <NavBar />
-            </View>
-        );
-        return(
-            <DrawerLayoutAndroid
-                drawerWidth={300}
-                drawerPosition={drawerPosition}
-                renderNavigationView={() => navigationView}>
+    const navigationView = (
+        <View style={styles.navigationContainer}>
+            <NavBar navigation={navigation} />
+        </View>
+    );
+    return(
+        <DrawerLayoutAndroid
+            drawerWidth={300}
+            drawerPosition={drawerPosition}
+            renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
-                    <View style={styles.title}>
-                        <Text style={styles.titleText}>MY ACCOUNT LIST</Text>
-                    </View>
-                    <View style={styles.middle}>
-                        <Text style={styles.accName}>Ms. Dulmini</Text>
-                        <View style={styles.divider} />
-                        <View style={styles.accDetails}>
-                            <Text style={styles.accNum}>8010605</Text>
-                            <View style={{flexDirection: 'row'}}>
-                                <Text style={styles.accBalance}>LKR 3,000</Text>
-                                <TouchableOpacity style={styles.editButton}>
-                                    <Text style={{fontSize: 20}}> EDIT </Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Text style={styles.accType}>SAVINGS ACCOUNT</Text>
-                            <View style={styles.editButtonView} />
-                        </View>
-                        <View style={styles.divider} />
-                        <View style={styles.accDetails}>
-                            <Text style={styles.accNum}>1020305</Text>
-                            <View style={{flexDirection: 'row'}}>
-                                <Text style={styles.accBalance}>LKR 7,500</Text>
-                                <TouchableOpacity style={styles.editButton}>
-                                    <Text style={{fontSize: 20}}> EDIT </Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Text style={styles.accType}>JOINT ACCOUNT</Text>
-                        </View>
-                        <View style={styles.divider} />
-                    </View>
-                </ImageBackground>
+                <Text style={{color:'white', fontSize:35, marginTop:'25%', marginLeft:'5%',fontWeight: 'bold'}}>Account List</Text>
             </View>
-            </DrawerLayoutAndroid>
-            )
+            <View>
+                <Text style={styles.accName}>Ms. Dulmini</Text>
+                <Dash dashGap={3} style={{width:'90%', height:1, flexDirection:'row', marginLeft:'5%'}}/>
+                <TouchableOpacity>
+                <View style={styles.accDetails}>
+                    <Text style={styles.accNum}>8010605</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.accBalance}>LKR 3,000</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}>
+                            <View onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}
+                                  style={{fontSize: 20, marginTop:'4%', marginLeft:'50%'}}>
+                                <Icon name="circle-edit-outline" size={40} color="#828264" />
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                    <Text style={styles.accType}>SAVINGS ACCOUNT</Text>
+                </View>
+                </TouchableOpacity>
+                <Dash dashGap={3} style={{width:'90%', height:1, flexDirection:'row', marginLeft:'5%'}}/>
+
+                <TouchableOpacity>
+                <View style={styles.accDetails}>
+                    <Text style={styles.accNum}>1020305</Text>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.accBalance}>LKR 7,500</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}>
+                            <View onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}
+                                  style={{fontSize: 20, marginTop:'4%', marginLeft:'50%'}}>
+                                <Icon name="circle-edit-outline" size={40} color="#828264" />
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                    <Text style={styles.accType}>JOINT ACCOUNT</Text>
+                </View>
+                </TouchableOpacity>
+                <Dash dashGap={3}  style={{width:'90%', height:3, flexDirection:'row', marginLeft:'5%'}}/>
+            </View>
+        </DrawerLayoutAndroid>)
 };
-export default AccountList;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height:'25%',
+        width: '100%',
+        backgroundColor: '#faee52',
     },
     innerContainer:{
         height:'80%',
         width:'70%',
         marginTop:'30%'
-    },
-    navigationContainer: {
-        flex: 1,
-        paddingTop: 50,
-        backgroundColor: '#fff',
-        padding: 8,
     },
     backgroundImage: {
         flex: 1,
@@ -117,18 +117,11 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
     },
-    middle: {
-        width: '80%',
-        height: '70%',
-        margin: '10%',
-        borderWidth: 5,
-        borderColor: '#ffcc00',
-    },
     accName: {
         fontSize: 25,
         margin: '5%',
         fontWeight: 'bold',
-        color: '#ffcc00',
+        color: '#ff9933',
     },
     divider: {
         borderWidth: 3,
@@ -167,3 +160,5 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
 });
+
+export default AccountList;
