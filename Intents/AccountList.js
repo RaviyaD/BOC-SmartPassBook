@@ -36,11 +36,11 @@ const AccountList = ({navigation}) => {
             <View>
                 <Text style={styles.accName}>Ms. Dulmini</Text>
                 <Dash dashGap={3} style={{width:'90%', height:1, flexDirection:'row', marginLeft:'5%'}}/>
-                <TouchableOpacity>
+                <TouchableOpacity  onPress={() => navigation.navigate('TransactionHistory',{  navigation: navigation})}>
                 <View style={styles.accDetails}>
                     <Text style={styles.accNum}>8010605</Text>
                     <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.accBalance}>LKR 3,000</Text>
+                        <Text style={styles.accBalance}>LKR 25,000</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}>
                             <View onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}
                                   style={{fontSize: 20, marginTop:'4%', marginLeft:'50%'}}>
@@ -53,7 +53,7 @@ const AccountList = ({navigation}) => {
                 </TouchableOpacity>
                 <Dash dashGap={3} style={{width:'90%', height:1, flexDirection:'row', marginLeft:'5%'}}/>
 
-                <TouchableOpacity>
+                <TouchableOpacity  onPress={() => navigation.navigate('TransactionHistory',{  navigation: navigation})}>
                 <View style={styles.accDetails}>
                     <Text style={styles.accNum}>1020305</Text>
                     <View style={{flexDirection: 'row'}}>

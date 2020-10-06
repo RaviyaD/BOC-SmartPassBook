@@ -31,7 +31,7 @@ const App = createStackNavigator({
                 headerShown: false
             },
         } ,
-        Register: { screen: Settings,
+        Register: { screen: Registration,
             navigationOptions: {
                 headerShown: false
             },
