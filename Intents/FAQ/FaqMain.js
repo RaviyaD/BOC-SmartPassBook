@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         fontSize: 18.5,
         fontFamily: 'sans-serif-condensed',
-        marginBottom: 30
+        marginBottom:5
 
     },
 

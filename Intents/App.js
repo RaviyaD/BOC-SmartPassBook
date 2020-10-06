@@ -24,6 +24,7 @@ import Chatbot from "./FAQ/Chatbot"
 import TransactionHistory from "./TransactionHistory";
 import Settings from "./Settings";
 import ChangePassword from "./ChangePassword";
+import StatementAnalysis from "./StatementAnalysis";
 
 
 const App = createStackNavigator({
@@ -58,6 +59,11 @@ const App = createStackNavigator({
             },
         },
         Chatbot: { screen: Chatbot,
+            navigationOptions: {
+                headerShown: false
+            },
+        },
+        StatementAnalysis: { screen: StatementAnalysis,
             navigationOptions: {
                 headerShown: false
             },

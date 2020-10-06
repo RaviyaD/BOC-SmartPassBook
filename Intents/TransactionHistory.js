@@ -57,7 +57,7 @@ class TransactionHistory extends Component {
     }
 
     render() {
-
+        const navigation = this.props.navigation;
         return (
             <DrawerLayoutAndroid
                 drawerWidth={300}
@@ -112,8 +112,7 @@ class TransactionHistory extends Component {
                                 <DialogFooter>
                                     <DialogButton
                                         text="Bank Statement"
-                                        onPress={() => {
-                                        }}
+                                        onPress={() => navigation.navigate('StatementAnalysis',{ navigation: navigation})}
                                     />
                                     <DialogButton
                                         text="Share"
