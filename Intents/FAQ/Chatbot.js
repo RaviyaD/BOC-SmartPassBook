@@ -1,138 +1,161 @@
-import React, {Component} from 'react';
 
+import React from 'react';
+import {Component} from 'react';
 import {
+    View,
+    Text, TouchableOpacity, TextInput, ImageBackground, StyleSheet, DrawerLayoutAndroid,
     ActivityIndicator,
     Alert,
-    FlatList,
-    Text,
-    StyleSheet,
-    View,
-    TextInput,
-    TouchableOpacity
-} from 'react-native';
+    FlatList, Platform,
+    LayoutAnimation,
+    ScrollView,
+    UIManager,
 
-//import {Card} from 'react-native-paper'
+} from 'react-native';
+import {GiftedChat} from 'react-native-gifted-chat';
+import {Dialogflow_V2} from 'react-native-dialogflow';
+import NavBar from "../NavBar";
+
+
+import {dialogflowConfig} from '../env';
+
+const BOT_USER = {
+    _id: 2,
+    name: 'FAQ Bot',
+    avatar: 'https://i.imgur.com/7k12EPD.png',
+};
+
 
 export default class Chatbot extends Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            text: '',
-            Ldata:[],
-            data: [
+
+
+        state = {
+            messages: [
                 {
-                    title: '1. Can I view statement in offline mode?',
-                    body: 'In offline mode, you can see last viewed transaction only',
-                },
-                {
-                    title: '2. Do I have to pay for Smart Passbook Service?',
-                    body: 'No. This is a free service to account holders',
-                },
-                {
-                    title: '3. How can I change my login pin?',
-                    body: 'Go to settings and change your pin',
-                },
-                {
-                    title: '4. Can I name my accounts?',
-                    body:
-                        'Yes. You can name your accounts with preferred names for easy identification',
+                    _id: 1,
+                    text:
+                        'Hi! I am the FAQ bot 🤖 from BOC.\n\nEnter your question and our team will reply you shortly.',
+                    createdAt: new Date(),
+                    user: BOT_USER,
                 },
             ],
+            drawerPosition:'left',
+            setDrawerPosition:'left'
         };
 
-        this.arrayholder = [];
+
+    componentDidMount() {
+        Dialogflow_V2.setConfiguration(
+            dialogflowConfig.client_email,
+            dialogflowConfig.private_key,
+            Dialogflow_V2.LANG_ENGLISH_US,
+            dialogflowConfig.project_id,
+        );
     }
 
+    handleGoogleResponse(result) {
+        let text = result.queryResult.fulfillmentMessages[0].text.text[0];
+        this.sendBotResponse(text);
+    }
 
+    onSend(messages = []) {
+        this.setState((previousState) => ({
+            messages: GiftedChat.append(previousState.messages, messages),
+        }));
 
-    searchFilterFunction(searchText, data) {
-        let newData = [];
-        let returnData =[];
-        if (searchText) {
-            newData = data.filter(function(item) {
-                const itemData = item.title.toUpperCase();
-                const textData = searchText.toUpperCase();
-                return itemData.includes(textData);
-            });
+        let message = messages[0].text;
+        Dialogflow_V2.requestQuery(
+            message,
+            (result) => this.handleGoogleResponse(result),
+            (error) => console.log(error),
+        );
+    }
+
+    sendBotResponse(text) {
+        let msg = {
+            _id: this.state.messages.length + 1,
+            text,
+            createdAt: new Date(),
+            user: BOT_USER,
+        };
+
+        this.setState((previousState) => ({
+            messages: GiftedChat.append(previousState.messages, [msg]),
+        }));
+    }
+
+    changeDrawerPosition = () => {
+        if (this.state.drawerPosition === 'left') {
+            this.setState({
+                setDrawerPosition:'right'
+            })
+        } else {
+            this.setState({
+                setDrawerPosition:'left'
+            })
         }
-        this.setState({
-            Ldata: newData
-        })
-    }
+    };
 
-    getData(){
-        this.state.data.map(d=>{
-
-            return <Text style={styles.paragraph}>{d.title}</Text>
-
-        })
-    }
+    navigationView = () => (
+        <View style={styles.navigationContainer}>
+            <NavBar navigation={this.props.navigation} />
+        </View>
+    );
 
     render() {
-        return (<View style={styles.container}>
-                <Text style={styles.paragraph}>Search Here.</Text>
-                <TextInput
-                    style={styles.input}
-                    underlineColorAndroid="transparent"
-                    placeholder="Search"
-                    placeholderTextColor="#9a73ef"
-                    autoCapitalize="none"
-                    onChangeText={(value) => {
-                        this.searchFilterFunction(value, this.state.data);
-                    }}
-                />
+        const navigation = this.props.navigation;
+        return (
+            <DrawerLayoutAndroid
+                drawerWidth={300}
+                drawerPosition={this.state.drawerPosition}
+                renderNavigationView={() => this.navigationView()}>
+                <View style={styles.container}>
+
+                    <Text style={{color:'white', fontSize:30, marginTop:'25%', marginLeft:'5%',fontWeight: 'bold'}}>We'll Text You...</Text>
+                </View>
 
 
-                {this.state.Ldata.map((item, index) => {
 
-                    return <Text style={styles.paragraph}>{item.title}</Text>
-                })}
+                    <View style={{flex: 1, backgroundColor: '#fff'}}>
+                    <GiftedChat
+                        messages={this.state.messages}
+                        onSend={(messages) => this.onSend(messages)}
+                        style={{Color: '#faee52'}}
+                        user={{
+                            _id: 1,
+                        }}
+                    />
+                    </View>
 
-                <TouchableOpacity
-                    activeOpacity={.8} //The opacity of the button when it is pressed
-                    style = {styles.button}
-
-                >
-                    <Text>hii click</Text>
-                </TouchableOpacity>
-
-            </View>
+            </DrawerLayoutAndroid>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
+        height:'25%',
+        width: '100%',
+        backgroundColor: '#faee52',
+    },
+
+    topic: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        textAlign: 'center',
+        marginBottom:50,
+        marginTop:100
+    },
+
+
+    backgroundImage: {
         flex: 1,
+        height: '10%',
+        width: '100%',
+        resizeMode: 'stretch',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
 
-
-        backgroundColor: "#ecf0f1",
-        padding: 8,
-    },
-    input: {
-        margin: 15,
-        height: 40,
-        paddingLeft: 10,
-        borderRadius: 2,
-        borderColor: "#7a42f4",
-        borderWidth: 1,
-    },
-    paragraph: {
-        margin: 24,
-        fontSize: 18,
-        fontWeight: "bold",
-        textAlign: "center",
-    },
-    button: {
-        backgroundColor: 'rgba(20,174,255,0.51)',
-        justifyContent: 'center',
-        alignContent: 'center',
-        borderWidth: 3,
-        padding: 5,
-        height: 200,
-        width: 200,  //The Width must be the same as the height
-        borderRadius:400,
-
-    },
 });

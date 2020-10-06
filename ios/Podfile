@@ -14,6 +14,8 @@ target 'BOC_passbook' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'react-native-dialogflow', :path => '../node_modules/react-native-dialogflow'
+
   target 'BOC_passbookTests' do
     inherit! :complete
     # Pods for testing
