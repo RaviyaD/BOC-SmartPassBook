@@ -20,6 +20,9 @@ import NavBar from "./NavBar";
 import AccountSettings from './AccountSettings';
 import TermsConditions from './Terms&Conditions';
 import FaqMain from "./FAQ/FaqMain";
+import TransactionHistory from "./TransactionHistory";
+import Settings from "./Settings";
+import ChangePassword from "./ChangePassword";
 
 
 const App = createStackNavigator({
@@ -28,7 +31,7 @@ const App = createStackNavigator({
                 headerShown: false
             },
         } ,
-        Register: { screen: Registration,
+        Register: { screen: Settings,
             navigationOptions: {
                 headerShown: false
             },
@@ -78,6 +81,21 @@ const App = createStackNavigator({
                 headerShown: false
             },
         },
+        TransactionHistory:{ screen: TransactionHistory,
+            navigationOptions: {
+                headerShown: true
+            },
+        },
+        Settings : { screen: Settings,
+            navigationOptions: {
+                headerShown: false
+            },
+        },
+        ChangePassword : {screen : ChangePassword,
+            navigationOptions: {
+                headerShown: false
+            },
+        }
     },
     {
         initialRouteName: 'Login',
