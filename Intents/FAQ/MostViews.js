@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {
     Platform,
+    LayoutAnimation,
     StyleSheet,
     View,
     Text,
+    ScrollView,
+    UIManager,
     TouchableOpacity,
 } from 'react-native';
 
@@ -76,9 +79,13 @@ const styles = StyleSheet.create({
     },
 
     Panel_Holder: {
-        borderWidth: 1,
-        borderColor: '#ffd800',
+        borderWidth:0.8 ,
+        borderColor: '#b2beb5',
         marginVertical: 5,
+        width:'90%',
+        borderRadius: 5,
+        marginLeft:20,
+        justifyContent: "center"
     },
 
     Btn: {

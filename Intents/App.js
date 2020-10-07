@@ -20,9 +20,12 @@ import NavBar from "./NavBar";
 import AccountSettings from './AccountSettings';
 import TermsConditions from './Terms&Conditions';
 import FaqMain from "./FAQ/FaqMain";
+import Chatbot from "./FAQ/Chatbot"
 import TransactionHistory from "./TransactionHistory";
 import Settings from "./Settings";
 import ChangePassword from "./ChangePassword";
+import AccountAnalysis from "./AccountAnalysis";
+
 
 
 const App = createStackNavigator({
@@ -51,7 +54,17 @@ const App = createStackNavigator({
                 headerShown: false
             },
         },
-        FAQ: { screen: FaqMain,
+        FaqMain: { screen: FaqMain,
+            navigationOptions: {
+                headerShown: false
+            },
+        },
+        Chatbot: { screen: Chatbot,
+            navigationOptions: {
+                headerShown: false
+            },
+        },
+        AccountAnalysis: { screen: AccountAnalysis,
             navigationOptions: {
                 headerShown: false
             },

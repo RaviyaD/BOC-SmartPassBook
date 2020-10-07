@@ -63,7 +63,7 @@ export default class NavBar extends Component{
                         <View  style={{marginTop: '7%', marginLeft:'7%', marginRight:'7%'}}>
                             <Icon name="chatbubbles" color="#828264" size={23} />
                         </View>
-                        <Text onPress={() => navigation.navigate('ContactUs', { navigation: navigation})} style={{fontSize: 20, marginLeft: '5%', marginTop: '7%'}}>
+                        <Text onPress={() => navigation.navigate('FaqMain', { navigation: navigation})} style={{fontSize: 20, marginLeft: '5%', marginTop: '7%'}}>
                             FAQ
                         </Text>
                     </View>
