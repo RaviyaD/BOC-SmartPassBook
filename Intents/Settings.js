@@ -5,6 +5,7 @@ import {
     StyleSheet,
     Text,
     View,
+    Image
 } from 'react-native';
 import {Button} from 'native-base'
 import NavBar from "./NavBar";
@@ -48,16 +49,17 @@ const Settings = (props, navigation) => {
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
-                    <Text style={styles.topic}>Settings</Text>
+                <Text style={{color:'white', fontSize:35, marginTop:'10%', marginLeft:'25%'}}>Settings</Text>
+                <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, marginLeft:'35%', borderWidth: 2, marginTop:'5%'}} source={require('../assets/tele.png')}/>
+            </View>
 
                     <View style={{
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
                         <Button info large style={{
-                            width: 250, justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40
+                            width: '70%', justifyContent: 'center',
+                            alignItems: 'center', marginTop: 40,left:'40%'
                         }}
                                 onPress={() => {
                                     props.navigation.navigate('ChangePassword');
@@ -84,8 +86,8 @@ const Settings = (props, navigation) => {
                         alignItems: 'center'
                     }}>
                         <Button info large style={{
-                            width: 250, textAlign: 'center', justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40
+                            width: '70%', textAlign: 'center', justifyContent: 'center',
+                            alignItems: 'center', marginTop: 40,left:'40%'
                         }}>
                             <Text style={{
                                 justifyContent: 'center',
@@ -104,18 +106,15 @@ const Settings = (props, navigation) => {
                         }}>You can delete your account from your device </Text>
                     </View>
 
-
-                </ImageBackground>
-            </View>
         </DrawerLayoutAndroid>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        height:'35%',
+        width: '100%',
+        backgroundColor: '#faee52',
     },
     topic: {
         fontWeight: 'bold',
