@@ -67,7 +67,7 @@ class TransactionHistory extends Component {
                 <Container>
                     <Content>
 
-                        <Row style={{marginTop: 20, top: 0}}>
+                        <Row style={{marginTop: 5, top: 0}}>
                             <Col style={{backgroundColor: '#fafaac', height: 120}}>
                                 <Button light bordered style={{
                                     left: 0,
