@@ -10,7 +10,7 @@ import {
 import {Button} from 'native-base'
 import NavBar from "./NavBar";
 
-const Settings = (props, navigation) => {
+const Settings = ({navigation}) => {
     const [value, onChangeText] = React.useState('');
     const [value1, onChangeText1] = React.useState('');
     const [value2, onChangeText2] = React.useState('');
@@ -62,7 +62,7 @@ const Settings = (props, navigation) => {
                             alignItems: 'center', marginTop: 40,left:'40%'
                         }}
                                 onPress={() => {
-                                    props.navigation.navigate('ChangePassword');
+                                    navigation.navigate('ChangePassword');
                                 }}
                         >
                             <Text style={{
