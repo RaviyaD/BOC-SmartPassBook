@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, SafeAreaView, ScrollView, Modal, Alert, DrawerLayoutAndroid} from "react-native";
+import {StyleSheet, View, Text, SafeAreaView, ScrollView, Modal, Alert, DrawerLayoutAndroid,Image} from "react-native";
 import {Card, CardItem, Button, Body, Container, Content} from "native-base";
 import Dialog, {
     DialogContent,
@@ -10,17 +10,18 @@ import Dialog, {
 } from 'react-native-popup-dialog';
 import {Row, Col} from 'react-native-easy-grid'
 import NavBar from "./NavBar";
-
+const credit = require('../assets/left.png')
+const debit = require('../assets/right.png')
 
 const array = [
-    {id: 0, date: '04/04/2020', amount: '+15500.00', balance: 'LKR 25000.00', color: 'blue', title: 'Boundry 1'},
-    {id: 1, date: '31/03/2020', amount: '+500.00', balance: 'LKR 9500.00', color: 'blue', title: 'Interest'},
-    {id: 2, date: '28/03/2020', amount: '-1000.00', balance: 'LKR 9000.00', color: 'red', title: 'Card Payment'},
-    {id: 3, date: '22/03/2020', amount: '-2000.00', balance: 'LKR 10000.00', color: 'red', title: 'Monthly Charge'},
-    {id: 4, date: '15/03/2020', amount: '+4000.00', balance: 'LKR 12000.00', color: 'blue', title: 'Bill Payment'},
-    {id: 5, date: '12/03/2020', amount: '-2000.00', balance: 'LKR 8000.00', color: 'red', title: 'Dialog Payment'},
-    {id: 6, date: '06/03/2020', amount: '+5000.00', balance: 'LKR 10000.00', color: 'blue', title: 'Boundry 2'},
-    {id: 7, date: '04/03/2020', amount: '+4500.00', balance: 'LKR 5000.00', color: 'blue', title: 'Deposite'},
+    {id: 0, date: '04/04/2020', amount: '+15500.00', balance: 'LKR 25000.00', color: 'blue', title: 'Boundry 1',img:debit},
+    {id: 1, date: '31/03/2020', amount: '+500.00', balance: 'LKR 9500.00', color: 'blue', title: 'Interest',img:debit},
+    {id: 2, date: '28/03/2020', amount: '-1000.00', balance: 'LKR 9000.00', color: 'red', title: 'Card Payment',img:credit},
+    {id: 3, date: '22/03/2020', amount: '-2000.00', balance: 'LKR 10000.00', color: 'red', title: 'Monthly Charge',img:credit},
+    {id: 4, date: '15/03/2020', amount: '+4000.00', balance: 'LKR 12000.00', color: 'blue', title: 'Bill Payment',img:debit},
+    {id: 5, date: '12/03/2020', amount: '-2000.00', balance: 'LKR 8000.00', color: 'red', title: 'Dialog Payment',img:credit},
+    {id: 6, date: '06/03/2020', amount: '+5000.00', balance: 'LKR 10000.00', color: 'blue', title: 'Boundry 2',img:debit},
+    {id: 7, date: '04/03/2020', amount: '+4500.00', balance: 'LKR 5000.00', color: 'blue', title: 'Deposite',img:debit},
 ]
 
 class TransactionHistory extends Component {
@@ -100,7 +101,7 @@ class TransactionHistory extends Component {
                         </Row>
 
                         <Dialog
-                            dialogTitle={<DialogTitle title="Account Details"/>}
+                            dialogTitle={<DialogTitle title="Account Details" />}
                             visible={this.state.visible}
                             dialogAnimation={new SlideAnimation({
                                 slideFrom: 'top',
@@ -112,7 +113,11 @@ class TransactionHistory extends Component {
                                 <DialogFooter>
                                     <DialogButton
                                         text="Bank Statement"
-                                        onPress={() => navigation.navigate('AccountAnalysis',{ navigation: navigation})}
+                                        onPress={() => {
+                                            this.setState({visible: false},()=>{
+                                                navigation.navigate('AccountAnalysis', {navigation: navigation})
+                                            })
+                                        }}
                                     />
                                     <DialogButton
                                         text="Share"
@@ -160,6 +165,7 @@ class TransactionHistory extends Component {
                                 return <Card key={key} style={{height: 100}}>
                                     <CardItem>
                                         <Body>
+                                            <Image source={value.img} style={{ width: 35, height: 40,position: 'absolute',left:-13,top:15,resizeMode: 'contain' }} />
                                             <Text style={{
                                                 fontSize: 20,
                                                 left: 30,
