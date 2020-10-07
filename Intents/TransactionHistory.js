@@ -112,7 +112,7 @@ class TransactionHistory extends Component {
                                 <DialogFooter>
                                     <DialogButton
                                         text="Bank Statement"
-
+                                        onPress={() => navigation.navigate('AccountAnalysis',{ navigation: navigation})}
                                     />
                                     <DialogButton
                                         text="Share"

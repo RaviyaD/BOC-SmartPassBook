@@ -24,6 +24,7 @@ import Chatbot from "./FAQ/Chatbot"
 import TransactionHistory from "./TransactionHistory";
 import Settings from "./Settings";
 import ChangePassword from "./ChangePassword";
+import AccountAnalysis from "./AccountAnalysis";
 
 
 
@@ -63,7 +64,11 @@ const App = createStackNavigator({
                 headerShown: false
             },
         },
-
+        AccountAnalysis: { screen: AccountAnalysis,
+            navigationOptions: {
+                headerShown: false
+            },
+        },
         Interest: { screen: Interest,
             navigationOptions: {
                 headerShown: false
