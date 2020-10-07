@@ -49,8 +49,8 @@ const Settings = ({navigation}) => {
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <Text style={{color:'white', fontSize:35, marginTop:'10%', marginLeft:'25%'}}>Settings</Text>
-                <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, marginLeft:'35%', borderWidth: 2, marginTop:'5%'}} source={require('../assets/tele.png')}/>
+                <Text style={{color:'white', fontSize:35, marginTop:'10%'}}>Settings</Text>
+                <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, borderWidth: 2, marginTop:'5%'}} source={require('../assets/tele.png')}/>
             </View>
 
                     <View style={{
@@ -115,6 +115,8 @@ const styles = StyleSheet.create({
         height:'35%',
         width: '100%',
         backgroundColor: '#faee52',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     topic: {
         fontWeight: 'bold',

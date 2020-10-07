@@ -1,5 +1,14 @@
 import React, {Component} from 'react';
-import {DrawerLayoutAndroid, ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+    DrawerLayoutAndroid,
+    Image,
+    ImageBackground,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
+} from 'react-native';
 import NavBar from "./NavBar";
 
 
@@ -42,11 +51,15 @@ const ChangePassword = ({navigation}) => {
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
-                    <Text style={styles.topic}>Change Password</Text>
-                    <Text style={styles.inputPw}>Password</Text>
+                <Text style={{color:'white', fontSize:35, marginTop:'10%'}}>Change Password</Text>
+                <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, borderWidth: 2, marginTop:'5%'}} source={require('../assets/tele.png')}/>
+            </View>
+
+            <View style={{ justifyContent: 'center',
+                alignItems: 'center'}}>
+            <Text style={styles.inputPw1}>Old Password</Text>
                     <TextInput
-                        style={styles.input}
+                        style={styles.inputnew}
                         visible-password={true}
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
@@ -84,7 +97,6 @@ const ChangePassword = ({navigation}) => {
                         <Text style={styles.submitButtonText}> Submit </Text>
                     </TouchableOpacity>
                     <Text style={styles.submitButtonText}> Submit </Text>
-                </ImageBackground>
             </View>
         </DrawerLayoutAndroid>
     );
@@ -92,7 +104,11 @@ const ChangePassword = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height:'25%',
+        width: '100%',
+        backgroundColor: '#faee52',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     topic: {
         fontWeight: 'bold',
@@ -117,7 +133,7 @@ const styles = StyleSheet.create({
     },
     inputPw: {
         textAlign: 'center',
-        paddingTop: 35,
+        paddingTop: 15,
         fontSize: 15,
     }, submitButton: {
         backgroundColor: '#000000',
@@ -132,7 +148,20 @@ const styles = StyleSheet.create({
         color: 'white',
     }, errorMsg: {
         color: '#800000',
-    },
+    },inputnew:{
+        marginTop: 20,
+        width: 200,
+        height: 40,
+        borderColor: '#000000',
+        borderRadius: 10,
+        textAlign: 'center',
+        borderWidth: 1,
+    },inputPw1: {
+        textAlign: 'center',
+        paddingTop: 45,
+        fontSize: 15,
+        paddingBottom:0
+    }
 })
 
 export default ChangePassword;
