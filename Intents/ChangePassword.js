@@ -3,7 +3,7 @@ import {DrawerLayoutAndroid, ImageBackground, StyleSheet, Text, TextInput, Touch
 import NavBar from "./NavBar";
 
 
-const ChangePassword = (navigation) => {
+const ChangePassword = ({navigation}) => {
     const [value, onChangeText] = React.useState('');
     const [value1, onChangeText1] = React.useState('');
     const [value2, onChangeText2] = React.useState('');
