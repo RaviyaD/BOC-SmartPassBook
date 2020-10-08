@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Dash from 'react-native-dash';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
@@ -9,9 +9,12 @@ import {
     DrawerLayoutAndroid
 } from 'react-native';
 import NavBar from "./NavBar";
+import Spinner from "react-native-loading-spinner-overlay";
+import {Content} from "native-base";
 
 const AccountList = ({navigation}) => {
     const [drawerPosition, setDrawerPosition] = useState('left');
+    const [spinner, setspinner] = useState(true);
     const changeDrawerPosition = () => {
         if (drawerPosition === 'left') {
             setDrawerPosition('right');
@@ -19,6 +22,12 @@ const AccountList = ({navigation}) => {
             setDrawerPosition('left');
         }
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setspinner(false)
+        },3000)
+    })
 
     const navigationView = (
         <View style={styles.navigationContainer}>
@@ -30,6 +39,14 @@ const AccountList = ({navigation}) => {
             drawerWidth={300}
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
+            <Spinner
+                visible={spinner}
+                textContent={'Loading...'}
+                textStyle={styles.spinnerTextStyle}
+                color="yellow"
+                animation='fade'
+
+            />
             <View style={styles.container}>
                 <Text style={{color:'white', fontSize:35, marginTop:'25%', marginLeft:'5%',fontWeight: 'bold'}}>Account List</Text>
             </View>
@@ -158,7 +175,9 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         marginLeft: '70%',
         justifyContent: 'flex-end',
-    },
+    },spinnerTextStyle: {
+    color: '#FFF'
+}
 });
 
 export default AccountList;

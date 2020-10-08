@@ -10,6 +10,7 @@ import Dialog, {
 } from 'react-native-popup-dialog';
 import {Row, Col} from 'react-native-easy-grid'
 import NavBar from "./NavBar";
+import Spinner from "react-native-loading-spinner-overlay";
 const credit = require('../assets/left.png')
 const debit = require('../assets/right.png')
 
@@ -31,8 +32,17 @@ class TransactionHistory extends Component {
         this.state = {
             visible: false,
             drawerPosition: 'left',
-            setDrawerPosition: 'left'
+            setDrawerPosition: 'left',
+            spinner: true
         }
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                spinner: !this.state.spinner
+            });
+        }, 3000);
     }
 
     changeDrawerPosition = () => {
@@ -67,7 +77,14 @@ class TransactionHistory extends Component {
 
                 <Container>
                     <Content>
+                        <Spinner
+                            visible={this.state.spinner}
+                            textContent={'Loading...'}
+                            textStyle={styles.spinnerTextStyle}
+                            color="yellow"
+                            animation='fade'
 
+                        />
                         <Row style={{marginTop: 5, top: 0}}>
                             <Col style={{backgroundColor: '#fafaac', height: 120}}>
                                 <Button light bordered style={{
@@ -229,6 +246,8 @@ const styles = StyleSheet.create({
         top: 15,
         width: 50,
         height: 20
+    },spinnerTextStyle: {
+        color: '#FFF'
     }
 })
 

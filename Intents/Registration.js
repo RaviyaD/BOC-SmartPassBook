@@ -4,7 +4,7 @@ import {
     View,
     Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet, ToastAndroid,
 } from 'react-native';
-
+import Spinner from 'react-native-loading-spinner-overlay';
 class Registration extends Component {
     state = {
         username: '',
@@ -13,7 +13,16 @@ class Registration extends Component {
         cpError: '',
         password: '',
         passwordError: '',
+        spinner: true
     };
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                spinner: !this.state.spinner
+            });
+        }, 3000);
+    }
 
     handleEmail = (text) => {
         this.setState({username: text},
@@ -84,6 +93,14 @@ class Registration extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
+                    <Spinner
+                        visible={this.state.spinner}
+                        textContent={'Loading...'}
+                        textStyle={styles.spinnerTextStyle}
+                        color="yellow"
+                        animation='fade'
+
+                    />
                     <Text style={styles.topic}>Sign Up</Text>
 
                     <Text style={styles.inputUn}>Username</Text>
@@ -191,6 +208,8 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
         alignItems: 'center',
         justifyContent: 'center',
-    },
+    },spinnerTextStyle: {
+        color: '#FFF'
+    }
 });
 export default Registration;
