@@ -1,5 +1,15 @@
 import React, {Component, useState} from 'react';
-import {View, StyleSheet, Button, DrawerLayoutAndroid, Text, ImageBackground, TouchableHighlight, Image} from 'react-native';
+import {
+    View,
+    StyleSheet,
+    Button,
+    DrawerLayoutAndroid,
+    Text,
+    ImageBackground,
+    Linking,
+    Image,
+    TouchableOpacity
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import NavBar from "./NavBar";
 
@@ -59,15 +69,21 @@ const ContactUs = ({navigation}) => {
                 </View>
             </View>
             <View style={{flex: 1, flexDirection: 'column', justifyContent:'flex-end', marginTop:'6%', marginLeft:'87%'}}>
-                    <View style={{width:50, height:50, borderWidth:2,borderRadius: 30}}>
+                <TouchableOpacity onPress={() =>Linking.openURL("https://twitter.com/ebankofceylon?lang=en")}>
+                <View style={{width:50, height:50, borderWidth:2,borderRadius: 30}}>
                         <Image style={{width:47, height:47, borderWidth:3,borderRadius: 30}} source={require('../assets/twitter-logo.jpg')}/>
-                    </View>
+                </View>
+                 </TouchableOpacity>
+                <TouchableOpacity onPress={() =>Linking.openURL("https://www.facebook.com/BANKOFCEYLON/")}>
                     <View style={{width: 50, height: 50, borderWidth:2, borderRadius: 30}}>
                         <Image style={{width:47, height:47, borderWidth:3,borderRadius: 30}} source={require('../assets/facebook-logo.png')}/>
                     </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() =>Linking.openURL("https://www.instagram.com/bocofficial/?hl=en")}>
                     <View style={{width: 50, height: 50, borderWidth:2, borderRadius: 30}}>
                         <Image style={{width:46, height:45, borderWidth:3,borderRadius: 30}} source={require('../assets/insta-logo.jpg')}/>
                     </View>
+                </TouchableOpacity>
             </View>
         </DrawerLayoutAndroid>
     );

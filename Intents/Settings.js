@@ -50,7 +50,6 @@ const Settings = ({navigation}) => {
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
                 <Text style={{color:'white', fontSize:35, marginTop:'10%'}}>Settings</Text>
-                <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, borderWidth: 2, marginTop:'5%'}} source={require('../assets/tele.png')}/>
             </View>
 
                     <View style={{

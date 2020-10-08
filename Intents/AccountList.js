@@ -43,7 +43,7 @@ const AccountList = ({navigation}) => {
                         <Text style={styles.accBalance}>LKR 25,000</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}>
                             <View onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}
-                                  style={{fontSize: 20, marginTop:'4%', marginLeft:'50%'}}>
+                                  style={{fontSize: 20, marginTop:'4%', marginLeft:'45%'}}>
                                 <Icon name="circle-edit-outline" size={40} color="#828264" />
                             </View>
                         </TouchableOpacity>
@@ -57,10 +57,10 @@ const AccountList = ({navigation}) => {
                 <View style={styles.accDetails}>
                     <Text style={styles.accNum}>1020305</Text>
                     <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.accBalance}>LKR 7,500</Text>
+                        <Text style={styles.accBalance}>LKR 75,000</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}>
                             <View onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}
-                                  style={{fontSize: 20, marginTop:'4%', marginLeft:'50%'}}>
+                                  style={{fontSize: 20, marginTop:'4%', marginLeft:'45%'}}>
                                 <Icon name="circle-edit-outline" size={40} color="#828264" />
                             </View>
                         </TouchableOpacity>
