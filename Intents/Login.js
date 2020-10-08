@@ -7,7 +7,7 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    ImageBackground, ToastAndroid,
+    ImageBackground, Image,
 } from 'react-native';
 
 
@@ -17,7 +17,15 @@ class Login extends Component {
         email: '',
         password: '',
         usernameError: '',
+        isVisible : true,
     };
+
+    componentDidMount(){
+        var that = this;
+        setTimeout(function(){
+            that.Hide_Splash_Screen();
+        }, 3000);
+    }
 
     handleEmail = (text) => {
         this.setState({email: text});
@@ -32,6 +40,12 @@ class Login extends Component {
     toRegisterIntent = (email, pass) => {
         this.props.navigation.navigate('Register');
     };
+
+    Hide_Splash_Screen=()=>{
+        this.setState({
+            isVisible : false
+        });
+    }
 
     validateUsername = () => {
         if (this.state.email !== 'raveen97' || this.state.password !== '12345') {
@@ -48,37 +62,47 @@ class Login extends Component {
     };
 
     render() {
+        let Splash_Screen = (
+            <View>
+                    <Image source={require('../assets/splash-screen.jpg')}
+                           style={{width:'100%', height: '100%'}} />
+            </View> );
+        let loginView = (
+            <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
+                <Text style={styles.bocText}>BOC</Text>
+                <Text style={styles.passBookText}>Smart | PassBook</Text>
+
+                <Text style={styles.loginText}>Login</Text>
+                <Text style={styles.inputUn}>Username</Text>
+                <TextInput style={styles.input}
+                           underlineColorAndroid="transparent"
+                           autoCapitalize="none"
+                           onChangeText={this.handleEmail}/>
+
+
+                <Text style={styles.inputPw}>Password</Text>
+                <TextInput style={styles.input}
+                           underlineColorAndroid="transparent"
+                           autoCapitalize="none"
+                           type='password'
+                           secureTextEntry={true}
+                           onChangeText={this.handlePassword}/>
+                <Text style={styles.errorMsg}>{this.state.usernameError}</Text>
+                <TouchableOpacity
+                    style={styles.submitButton}
+                    onPress={
+                        () => this.login(this.state.email, this.state.password)
+                    }>
+                    <Text style={styles.submitButtonText}> Submit </Text>
+                </TouchableOpacity>
+                <Text style={styles.registerLink} onPress={() => this.toRegisterIntent()}>Register ?</Text>
+            </ImageBackground>
+        )
         return (
             <View style={styles.container}>
-                <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
-                    <Text style={styles.bocText}>BOC</Text>
-                    <Text style={styles.passBookText}>Smart | PassBook</Text>
-
-                    <Text style={styles.loginText}>Login</Text>
-                    <Text style={styles.inputUn}>Username</Text>
-                    <TextInput style={styles.input}
-                               underlineColorAndroid="transparent"
-                               autoCapitalize="none"
-                               onChangeText={this.handleEmail}/>
-
-
-                    <Text style={styles.inputPw}>Password</Text>
-                    <TextInput style={styles.input}
-                               underlineColorAndroid="transparent"
-                               autoCapitalize="none"
-                               type='password'
-                               secureTextEntry={true}
-                               onChangeText={this.handlePassword}/>
-                    <Text style={styles.errorMsg}>{this.state.usernameError}</Text>
-                    <TouchableOpacity
-                        style={styles.submitButton}
-                        onPress={
-                            () => this.login(this.state.email, this.state.password)
-                        }>
-                        <Text style={styles.submitButtonText}> Submit </Text>
-                    </TouchableOpacity>
-                    <Text style={styles.registerLink} onPress={() => this.toRegisterIntent()}>Register ?</Text>
-                </ImageBackground>
+                {
+                    (this.state.isVisible === true) ? Splash_Screen : loginView
+                }
             </View>
         );
     }
