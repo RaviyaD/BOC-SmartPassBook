@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     ImageBackground, Image,
 } from 'react-native';
+import * as firebase from "firebase";
 
 
 class Login extends Component {
@@ -17,14 +18,27 @@ class Login extends Component {
         email: '',
         password: '',
         usernameError: '',
-        isVisible : true,
+        isVisible: true,
+        loginList: []
     };
 
-    componentDidMount(){
+    componentDidMount() {
         var that = this;
-        setTimeout(function(){
+        setTimeout(function () {
             that.Hide_Splash_Screen();
         }, 3000);
+
+        firebase.database().ref('Login').on('value', (snapshot) => {
+            snapshot.forEach((item) => {
+                console.log(item.val())
+                this.setState((state) => ({
+                    loginList: [...state.loginList, {
+                        username: item.val().username,
+                        password: item.val().password
+                    }]
+                }));
+            })
+        })
     }
 
     handleEmail = (text) => {
@@ -35,20 +49,24 @@ class Login extends Component {
     };
     login = (email, pass) => {
         let login = this.validateUsername();
-        this.props.navigation.navigate('Dashboard');
+        //if (login)
+            this.props.navigation.navigate('Dashboard');
     };
     toRegisterIntent = (email, pass) => {
         this.props.navigation.navigate('Register');
     };
 
-    Hide_Splash_Screen=()=>{
+    Hide_Splash_Screen = () => {
         this.setState({
-            isVisible : false
+            isVisible: false
         });
-    }
+    };
 
     validateUsername = () => {
-        if (this.state.email !== 'raveen97' || this.state.password !== '12345') {
+        let index = this.state.loginList.findIndex((item) => (
+            item.username === this.state.email && item.password === this.state.password
+        ));
+        if (index < 0) {
             this.setState({
                 usernameError: 'Username or Password is wrong!',
             });
@@ -64,9 +82,9 @@ class Login extends Component {
     render() {
         let Splash_Screen = (
             <View>
-                    <Image source={require('../assets/splash-screen.jpg')}
-                           style={{width:'100%', height: '100%'}} />
-            </View> );
+                <Image source={require('../assets/splash-screen.jpg')}
+                       style={{width: '100%', height: '100%'}}/>
+            </View>);
         let loginView = (
             <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
                 <Text style={styles.bocText}>BOC</Text>
@@ -163,7 +181,7 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 15,
         height: 40,
-        width:150,
+        width: 150,
         borderRadius: 10,
     },
     submitButtonText: {

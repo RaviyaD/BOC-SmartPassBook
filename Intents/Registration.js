@@ -5,6 +5,8 @@ import {
     Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet, ToastAndroid,
 } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
+import * as firebase from "firebase";
+
 class Registration extends Component {
     state = {
         username: '',
@@ -13,7 +15,9 @@ class Registration extends Component {
         cpError: '',
         password: '',
         passwordError: '',
-        spinner: true
+        spinner: true,
+
+        usernameList: []
     };
 
     componentDidMount() {
@@ -22,6 +26,15 @@ class Registration extends Component {
                 spinner: !this.state.spinner
             });
         }, 3000);
+
+        firebase.database().ref('Username').on('value', (snapshot) => {
+            snapshot.forEach((item) => {
+                console.log(item.val().username)
+                this.setState((state) => ({
+                    usernameList: [...state.usernameList, item.val().username]
+                }));
+            })
+        })
     }
 
     handleEmail = (text) => {
@@ -68,7 +81,7 @@ class Registration extends Component {
 
     };
     validateUsername = () => {
-        if (this.state.username !== 'raveen97') {
+        if (!this.state.usernameList.includes(this.state.username)) {
             this.setState({
                 usernameError: 'Enter valid username',
             });
@@ -84,8 +97,14 @@ class Registration extends Component {
     toLoginIntent = () => {
         let saved = (this.validateUsername() && this.validatePassword() && this.validatePasswordLength());
         if (saved) {
-            ToastAndroid.show('Yeah boyeee!', ToastAndroid.SHORT);
-            this.props.navigation.navigate('Login');
+            let key = firebase.database().ref('Login').push().key;
+            firebase.database().ref('Login/' + key).set({
+                username: this.state.username,
+                password: this.state.password
+            }, () => {
+                ToastAndroid.show('Yeah boyeee!', ToastAndroid.SHORT);
+                this.props.navigation.navigate('Login');
+            });
         }
     };
 
@@ -185,7 +204,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#000000',
         padding: 10,
         margin: 15,
-        width:150,
+        width: 150,
         height: 40,
         borderRadius: 10,
     },
@@ -208,7 +227,7 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
         alignItems: 'center',
         justifyContent: 'center',
-    },spinnerTextStyle: {
+    }, spinnerTextStyle: {
         color: '#FFF'
     }
 });

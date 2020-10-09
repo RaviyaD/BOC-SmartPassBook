@@ -25,7 +25,20 @@ import TransactionHistory from "./TransactionHistory";
 import Settings from "./Settings";
 import ChangePassword from "./ChangePassword";
 import AccountAnalysis from "./AccountAnalysis";
+import * as firebase from 'firebase';
 
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyA7shzS2c495ES4MS-QUchZfL1LN8QExq8",
+    authDomain: "boc-sp.firebaseapp.com",
+    databaseURL: "https://boc-sp.firebaseio.com",
+    projectId: "boc-sp",
+    storageBucket: "boc-sp.appspot.com",
+    messagingSenderId: "997751638487",
+    appId: "1:997751638487:web:d95b63363b2ea16f22e392"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 
 const App = createStackNavigator({
