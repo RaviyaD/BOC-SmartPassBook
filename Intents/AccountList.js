@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Component} from 'react';
 import Dash from 'react-native-dash';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
@@ -11,83 +11,131 @@ import {
 import NavBar from "./NavBar";
 import Spinner from "react-native-loading-spinner-overlay";
 import {Content} from "native-base";
+import * as firebase from "firebase";
 
-const AccountList = ({navigation}) => {
-    const [drawerPosition, setDrawerPosition] = useState('left');
-    const [spinner, setspinner] = useState(true);
-    const changeDrawerPosition = () => {
-        if (drawerPosition === 'left') {
-            setDrawerPosition('right');
+class AccountList extends Component {
+
+    state = {
+        drawerPosition:'left',
+        setDrawerPosition:'left',
+        spinner: true,
+        list1:[],
+        list2:[]
+    };
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                spinner: !this.state.spinner
+            });
+        }, 3000);
+
+        firebase.database().ref('AccountList').on('value', (snapshot) => {
+            snapshot.forEach((item) => {
+                console.log(item.val())
+                if(item.key==='Account'){
+                    this.setState({
+                        list1:item.val()
+                    })
+                }else{
+                    this.setState({
+                        list2:item.val()
+                    })
+                }
+            })
+        })
+
+    }
+
+    changeDrawerPosition = () => {
+        if (this.state.drawerPosition === 'left') {
+            this.setState({
+                setDrawerPosition:'right'
+            })
         } else {
-            setDrawerPosition('left');
+            this.setState({
+                setDrawerPosition:'left'
+            })
         }
     };
 
-    useEffect(() => {
-        setTimeout(() => {
-            setspinner(false)
-        },3000)
-    })
-
-    const navigationView = (
+    navigationView = () => (
         <View style={styles.navigationContainer}>
-            <NavBar navigation={navigation} />
+            <NavBar navigation={this.props.navigation} />
         </View>
     );
-    return(
-        <DrawerLayoutAndroid
-            drawerWidth={300}
-            drawerPosition={drawerPosition}
-            renderNavigationView={() => navigationView}>
-            <Spinner
-                visible={spinner}
-                textContent={'Loading...'}
-                textStyle={styles.spinnerTextStyle}
-                color="yellow"
-                animation='fade'
+    render() {
+        return (
+            <DrawerLayoutAndroid
+                drawerWidth={300}
+                drawerPosition={this.drawerPosition}
+                renderNavigationView={() => this.navigationView()}>
+                <Spinner
+                    visible={this.state.spinner}
+                    textContent={'Loading...'}
+                    textStyle={styles.spinnerTextStyle}
+                    color="yellow"
+                    animation='fade'
 
-            />
-            <View style={styles.container}>
-                <Text style={{color:'white', fontSize:35, marginTop:'25%', marginLeft:'5%',fontWeight: 'bold'}}>Account List</Text>
-            </View>
-            <View>
-                <Text style={styles.accName}>Ms. Dulmini</Text>
-                <Dash dashGap={3} style={{width:'90%', height:1, flexDirection:'row', marginLeft:'5%'}}/>
-                <TouchableOpacity  onPress={() => navigation.navigate('TransactionHistory',{  navigation: navigation})}>
-                <View style={styles.accDetails}>
-                    <Text style={styles.accNum}>8010605</Text>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.accBalance}>LKR 25,000</Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}>
-                            <View onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}
-                                  style={{fontSize: 20, marginTop:'4%', marginLeft:'45%'}}>
-                                <Icon name="circle-edit-outline" size={40} color="#828264" />
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    <Text style={styles.accType}>SAVINGS ACCOUNT</Text>
+                />
+                <View style={styles.container}>
+                    <Text
+                        style={{color: 'white', fontSize: 35, marginTop: '25%', marginLeft: '5%', fontWeight: 'bold'}}>Account
+                        List</Text>
                 </View>
-                </TouchableOpacity>
-                <Dash dashGap={3} style={{width:'90%', height:1, flexDirection:'row', marginLeft:'5%'}}/>
+                <View>
+                    <Text style={styles.accName}>Ms. Dulmini</Text>
+                    <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('TransactionHistory', {navigation: navigation})}>
+                        <View style={styles.accDetails}>
+                            <Text style={styles.accNum}>{this.state.list2.ID}</Text>
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.accBalance}>LKR {this.state.list2.Balance}</Text>
+                                <TouchableOpacity onPress={() => navigation.navigate('AccountSettings', {
+                                    AccountNo: this.state.list2.ID,
+                                    navigation: navigation
+                                })}>
+                                    <View onPress={() => navigation.navigate('AccountSettings', {
+                                        AccountNo: this.state.list2.ID,
+                                        navigation: navigation
+                                    })}
+                                          style={{fontSize: 20, marginTop: '4%', marginLeft: '45%'}}>
+                                        <Icon name="circle-edit-outline" size={40} color="#828264"/>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                            <Text style={styles.accType}>{this.state.list2.Type}</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
 
-                <TouchableOpacity  onPress={() => navigation.navigate('TransactionHistory',{  navigation: navigation})}>
-                <View style={styles.accDetails}>
-                    <Text style={styles.accNum}>1020305</Text>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.accBalance}>LKR 75,000</Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}>
-                            <View onPress={() => navigation.navigate('AccountSettings',{ AccountNo: 8010605, navigation: navigation})}
-                                  style={{fontSize: 20, marginTop:'4%', marginLeft:'45%'}}>
-                                <Icon name="circle-edit-outline" size={40} color="#828264" />
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('TransactionHistory', {navigation: navigation})}>
+                        <View style={styles.accDetails}>
+                            <Text style={styles.accNum}>{this.state.list1.ID}</Text>
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={styles.accBalance}>LKR {this.state.list1.Balance}</Text>
+                                <TouchableOpacity onPress={() => navigation.navigate('AccountSettings', {
+                                    AccountNo: this.state.list2.ID,
+                                    navigation: navigation
+                                })}>
+                                    <View onPress={() => navigation.navigate('AccountSettings', {
+                                        AccountNo: this.state.list2.ID,
+                                        navigation: navigation
+                                    })}
+                                          style={{fontSize: 20, marginTop: '4%', marginLeft: '45%'}}>
+                                        <Icon name="circle-edit-outline" size={40} color="#828264"/>
+                                    </View>
+                                </TouchableOpacity>
                             </View>
-                        </TouchableOpacity>
-                    </View>
-                    <Text style={styles.accType}>JOINT ACCOUNT</Text>
+                            <Text style={styles.accType}>{this.state.list1.Type}</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <Dash dashGap={3} style={{width: '90%', height: 3, flexDirection: 'row', marginLeft: '5%'}}/>
                 </View>
-                </TouchableOpacity>
-                <Dash dashGap={3}  style={{width:'90%', height:3, flexDirection:'row', marginLeft:'5%'}}/>
-            </View>
-        </DrawerLayoutAndroid>)
+            </DrawerLayoutAndroid>)
+    }
 };
 
 const styles = StyleSheet.create({

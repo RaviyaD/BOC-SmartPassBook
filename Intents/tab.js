@@ -2,6 +2,8 @@ import * as React from 'react';
 import {View, StyleSheet, Dimensions, Text} from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import OtherInterest from "./OtherInterest";
+
 
 const FirstRoute = () => (
     <View>
@@ -35,42 +37,7 @@ const FirstRoute = () => (
 );
 
 const SecondRoute = () => (
-    <View>
-        <View>
-            <View style={styles.rate}>
-                <Icon name="star-half-empty" color="#828264" size={23} />
-                <Text style={{fontSize: 20,marginLeft:'6%'}}>
-                    FIXED DEPOSIT {'                       '} 5%
-                </Text>
-            </View>
-
-            <View style={styles.rate}>
-                <Icon name="star-half-empty" color="#828264" size={23} />
-                <Text style={{fontSize: 20,marginLeft:'6%'}}>
-                    CURRENT ACCOUNT {'             '} 0%</Text>
-            </View>
-
-            <View style={styles.rate}>
-                <Icon name="star-half-empty" color="#828264" size={23} />
-                <Text style={{fontSize: 20,marginLeft:'6%'}}>
-                LOAN {'                                       '} 15%
-            </Text>
-            </View>
-            <View style={styles.rate}>
-                <Icon name="star-half-empty" color="#828264" size={23} />
-                <Text style={{fontSize: 20,marginLeft:'6%'}}>
-                    BOC TEEN {'                                  '} 3%
-                </Text>
-            </View>
-
-            <View style={styles.rate}>
-                <Icon name="star-half-empty" color="#828264" size={23} />
-                <Text style={{fontSize: 20,marginLeft:'6%'}}>
-                    SENIOR CITIZENS {'                  '} 10%
-                </Text>
-            </View>
-        </View>
-    </View>
+    <OtherInterest />
 );
 
 const initialLayout = { width: Dimensions.get('window').width };
@@ -81,7 +48,6 @@ export default function TabViewExample() {
         { key: 'first', title: 'Your Account' },
         { key: 'second', title: 'Other Accounts' },
     ]);
-
     const renderScene = SceneMap({
         first: FirstRoute,
         second: SecondRoute,

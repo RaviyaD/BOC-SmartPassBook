@@ -1,7 +1,8 @@
-import React, { useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, DrawerLayoutAndroid, Text} from 'react-native';
 import NavBar from "./NavBar";
 import TabViewExample from "./tab";
+import * as firebase from "firebase";
 
 
 const Interest = ({navigation}) => {
@@ -20,6 +21,7 @@ const Interest = ({navigation}) => {
             <NavBar navigation={navigation} />
         </View>
     );
+
 
     return (
         <DrawerLayoutAndroid
