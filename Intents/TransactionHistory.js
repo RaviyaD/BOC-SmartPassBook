@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, SafeAreaView, ScrollView, Modal, Alert, DrawerLayoutAndroid,Image} from "react-native";
+import {StyleSheet, View, Text, DrawerLayoutAndroid,Image} from "react-native";
 import {Card, CardItem, Button, Body, Container, Content} from "native-base";
 import Dialog, {
     DialogContent,
