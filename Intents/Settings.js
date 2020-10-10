@@ -54,12 +54,10 @@ const Settings = ({navigation}) => {
 
                     <View style={{
                         justifyContent: 'center',
-                        alignItems: 'center'
+                        alignItems: 'center',
+
                     }}>
-                        <Button info large style={{
-                            width: '70%', justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40,left:'40%'
-                        }}
+                        <Button info large style={styles.passwordButton}
                                 onPress={() => {
                                     navigation.navigate('ChangePassword');
                                 }}
@@ -73,9 +71,9 @@ const Settings = ({navigation}) => {
                             }}> Change Password </Text>
                         </Button>
                         <Text style={{
-                            textAlign: 'center', width: 250,
+                            textAlign: 'center', width: '40%',
                             paddingTop: 0,
-                            fontSize: 15, color: '#d26969', fontStyle: 'italic'
+                            fontSize: 15, color: '#706d04', fontStyle: 'italic'
                         }}>You can change your pin and make your account more secure </Text>
 
                     </View>
@@ -86,7 +84,7 @@ const Settings = ({navigation}) => {
                     }}>
                         <Button info large style={{
                             width: '70%', textAlign: 'center', justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40,left:'40%'
+                            alignItems: 'center', marginTop: 40,left:'40%', backgroundColor: '#f5e1a6',
                         }}>
                             <Text style={{
                                 justifyContent: 'center',
@@ -101,7 +99,7 @@ const Settings = ({navigation}) => {
                         <Text style={{
                             textAlign: 'center', width: 250,
                             paddingTop: 0,
-                            fontSize: 15, color: '#d26969', fontStyle: 'italic'
+                            fontSize: 15, color: '#706d04', fontStyle: 'italic'
                         }}>You can delete your account from your device </Text>
                     </View>
 
@@ -142,7 +140,14 @@ const styles = StyleSheet.create({
         top: 0,
         fontSize: 20,
         fontWeight: 'bold'
-    },
+    }, passwordButton: {
+        width: '70%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 40,
+        left: '40%',
+        backgroundColor: '#f5e1a6',
+    }
 })
 
 export default Settings;

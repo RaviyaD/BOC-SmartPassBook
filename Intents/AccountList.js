@@ -87,7 +87,7 @@ class AccountList extends Component {
                     <Text style={styles.accName}>Ms. Dulmini</Text>
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
+                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation,type:'Account',balance:this.state.list2.Balance,id:this.state.list2.ID,at:this.state.list2.Type})}>
                         <View style={styles.accDetails}>
                             <Text style={styles.accNum}>{this.state.list2.ID}</Text>
                             <View style={{flexDirection: 'row'}}>
@@ -111,7 +111,7 @@ class AccountList extends Component {
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
 
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
+                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation,type:'Account1',balance:this.state.list1.Balance,id:this.state.list1.ID,at:this.state.list1.Type})}>
                         <View style={styles.accDetails}>
                             <Text style={styles.accNum}>{this.state.list1.ID}</Text>
                             <View style={{flexDirection: 'row'}}>

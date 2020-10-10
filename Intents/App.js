@@ -109,7 +109,7 @@ const App = createStackNavigator({
         },
         TransactionHistory:{ screen: TransactionHistory,
             navigationOptions: {
-                headerShown: true
+                headerShown: false
             },
         },
         Settings : { screen: Settings,
