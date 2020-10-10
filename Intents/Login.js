@@ -7,10 +7,10 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    ImageBackground, Image,
+    ImageBackground, Image,StatusBar
 } from 'react-native';
 import * as firebase from "firebase";
-
+import NetInfo from "@react-native-community/netinfo";
 
 class Login extends Component {
 
@@ -19,7 +19,8 @@ class Login extends Component {
         password: '',
         usernameError: '',
         isVisible: true,
-        loginList: []
+        loginList: [],
+        isConnected : false
     };
 
     componentDidMount() {
@@ -27,6 +28,10 @@ class Login extends Component {
         setTimeout(function () {
             that.Hide_Splash_Screen();
         }, 3000);
+
+      setInterval(() =>  NetInfo.addEventListener(state => {
+            this.setState({isConnected : state.isConnected})
+        }),2000);
 
         firebase.database().ref('Login').on('value', (snapshot) => {
             snapshot.forEach((item) => {
@@ -118,6 +123,7 @@ class Login extends Component {
         )
         return (
             <View style={styles.container}>
+                { !this.state.isConnected ? <View style={{width:'100%',height:25,backgroundColor: 'red'}}><Text style={{textAlign:'center',textColor: 'white'}}>No Internet Connection</Text></View> : null }
                 {
                     (this.state.isVisible === true) ? Splash_Screen : loginView
                 }
