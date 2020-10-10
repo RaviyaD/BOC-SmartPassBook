@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {View, StyleSheet, Dimensions, Text} from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import OtherInterest from "./OtherInterest";
 
 

@@ -87,18 +87,18 @@ class AccountList extends Component {
                     <Text style={styles.accName}>Ms. Dulmini</Text>
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('TransactionHistory', {navigation: navigation})}>
+                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
                         <View style={styles.accDetails}>
                             <Text style={styles.accNum}>{this.state.list2.ID}</Text>
                             <View style={{flexDirection: 'row'}}>
                                 <Text style={styles.accBalance}>LKR {this.state.list2.Balance}</Text>
-                                <TouchableOpacity onPress={() => navigation.navigate('AccountSettings', {
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('AccountSettings', {
                                     AccountNo: this.state.list2.ID,
-                                    navigation: navigation
+                                    navigation: this.props.navigation
                                 })}>
-                                    <View onPress={() => navigation.navigate('AccountSettings', {
+                                    <View onPress={() => this.props.navigation.navigate('AccountSettings', {
                                         AccountNo: this.state.list2.ID,
-                                        navigation: navigation
+                                        navigation: this.props.navigation
                                     })}
                                           style={{fontSize: 20, marginTop: '4%', marginLeft: '45%'}}>
                                         <Icon name="circle-edit-outline" size={40} color="#828264"/>
@@ -111,18 +111,18 @@ class AccountList extends Component {
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
 
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('TransactionHistory', {navigation: navigation})}>
+                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
                         <View style={styles.accDetails}>
                             <Text style={styles.accNum}>{this.state.list1.ID}</Text>
                             <View style={{flexDirection: 'row'}}>
                                 <Text style={styles.accBalance}>LKR {this.state.list1.Balance}</Text>
-                                <TouchableOpacity onPress={() => navigation.navigate('AccountSettings', {
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('AccountSettings', {
                                     AccountNo: this.state.list2.ID,
-                                    navigation: navigation
+                                    navigation: this.props.navigation
                                 })}>
-                                    <View onPress={() => navigation.navigate('AccountSettings', {
+                                    <View onPress={() => this.props.navigation.navigate('AccountSettings', {
                                         AccountNo: this.state.list2.ID,
-                                        navigation: navigation
+                                        navigation: this.props.navigation
                                     })}
                                           style={{fontSize: 20, marginTop: '4%', marginLeft: '45%'}}>
                                         <Icon name="circle-edit-outline" size={40} color="#828264"/>
