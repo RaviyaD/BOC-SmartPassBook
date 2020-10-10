@@ -9,12 +9,14 @@ import {
 } from 'react-native';
 import {Button} from 'native-base'
 import NavBar from "./NavBar";
+import AwesomeAlert from "react-native-awesome-alerts";
 
 const Settings = ({navigation}) => {
     const [value, onChangeText] = React.useState('');
     const [value1, onChangeText1] = React.useState('');
     const [value2, onChangeText2] = React.useState('');
     const [error, onChangeError] = React.useState('');
+    const [showAlert,onChangeAlert] = React.useState(false);
 
     const [drawerPosition, setDrawerPosition] = React.useState('left');
     const changeDrawerPosition = () => {
@@ -52,13 +54,57 @@ const Settings = ({navigation}) => {
                 <Text style={{color:'white', fontSize:35, marginTop:'25%'}}>Settings</Text>
             </View>
 
+            {/*<View style={{flexDirection:'row', marginTop:'25%',marginLeft:'10%', height:'70%'}}>*/}
+            {/*    <View style={{height:'30%', width:'40%', borderWidth:7, borderColor: '#faee52', borderBottomStartRadius:30, padding: 2, borderTopEndRadius: 40}}>*/}
+            {/*        <View style={{*/}
+            {/*            justifyContent: 'center',*/}
+            {/*            alignItems: 'center'*/}
+            {/*        }}>*/}
+            {/*            <View style={{*/}
+            {/*                width: '70%', justifyContent: 'center',*/}
+            {/*                alignItems: 'center', marginTop: 20,left:'5%'*/}
+            {/*            }}*/}
+            {/*                    onPress={() => {*/}
+            {/*                        navigation.navigate('ChangePassword');*/}
+            {/*                    }}*/}
+            {/*            >*/}
+            {/*                <Text style={{*/}
+            {/*                    textAlign: 'center',*/}
+            {/*                    fontSize: 18,*/}
+            {/*                    fontWeight: 'bold',*/}
+            {/*                    fontStyle: 'italic'*/}
+            {/*                }}> Change Password </Text>*/}
+            {/*            </View>*/}
+
+            {/*        </View>*/}
+            {/*    </View>*/}
+            {/*    <View style={{marginLeft:'3%',height:'30%', width:'40%', borderWidth:7, borderColor: '#faee52', borderBottomEndRadius:40, borderTopStartRadius:40, padding: 2}}>*/}
+            {/*        <View style={{*/}
+            {/*            justifyContent: 'center',*/}
+            {/*            alignItems: 'center'*/}
+            {/*        }}>*/}
+            {/*            <View style={{*/}
+            {/*                width: '70%', justifyContent: 'center',*/}
+            {/*                alignItems: 'center', marginTop: 20,left:'1%'*/}
+            {/*            }}>*/}
+            {/*                <Text style={{*/}
+            {/*                    textAlign: 'center',*/}
+            {/*                    fontSize: 18,*/}
+            {/*                    fontWeight: 'bold',*/}
+            {/*                    fontStyle: 'italic'*/}
+            {/*                }}> Deactivate Account  </Text>*/}
+            {/*            </View>*/}
+
+            {/*        </View>*/}
+            {/*    </View>*/}
+            {/*</View>*/}
                     <View style={{
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
                         <Button info large style={{
                             width: '70%', justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40,left:'40%'
+                            alignItems: 'center', marginTop: 40,left:'40%',backgroundColor:'#faee52'
                         }}
                                 onPress={() => {
                                     navigation.navigate('ChangePassword');
@@ -75,19 +121,44 @@ const Settings = ({navigation}) => {
                         <Text style={{
                             textAlign: 'center', width: 250,
                             paddingTop: 0,
-                            fontSize: 15, color: '#d26969', fontStyle: 'italic'
+                            fontSize: 15, color: '#d26969', fontStyle: 'italic',
                         }}>You can change your pin and make your account more secure </Text>
 
                     </View>
 
-                    <View style={{
+            <AwesomeAlert
+                show={showAlert}
+                showProgress={false}
+                title="Deactivate"
+                message="Are you sure to deactivate device"
+                closeOnTouchOutside={true}
+                closeOnHardwareBackPress={false}
+                showConfirmButton={true}
+                showCancelButton={true}
+                confirmText="Ok"
+                confirmButtonColor='#faee52'
+                onConfirmPressed={() => {
+                    onChangeAlert(false)
+                    navigation.navigate('Login')
+                }}
+                cancelText='No'
+                onCancelPressed={() => {
+                    onChangeAlert(false)
+                }}
+            />
+
+
+
+
+            <View style={{
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
                         <Button info large style={{
                             width: '70%', textAlign: 'center', justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40,left:'40%'
-                        }}>
+                            alignItems: 'center', marginTop: 40,left:'40%',backgroundColor:'#faee52'
+                        }}
+                        onPress={() => onChangeAlert(true)}>
                             <Text style={{
                                 justifyContent: 'center',
                                 alignItems: 'center',

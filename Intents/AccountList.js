@@ -80,18 +80,18 @@ class AccountList extends Component {
                 />
                 <View style={styles.container}>
                     <Text
-                        style={{color: 'white', fontSize: 35, marginTop: '25%', marginLeft: '20%', fontWeight: 'bold'}}>ACCOUNT LIST</Text>
+                        style={{color: 'white', fontSize: 35, marginTop: '17%', marginLeft: '16%', fontWeight: 'bold'}}>ACCOUNT LIST</Text>
                 </View>
                 <View>
                     <Text style={styles.accName}>Ms. Dulmini</Text>
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
-                    <View style={{margin:10, backgroundColor:'white', shadowColor:'black', shadowRadius:2}}>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
                                 <View style={styles.accDetails}>
-                                    <Text style={styles.accNum}>{this.state.list2.ID}</Text>
+                                    <Text style={styles.accNum}>{this.state.list2? this.state.list2.Name: 'No name'}</Text>
+                                    <Text style={styles.accNum}>{this.state.list2? this.state.list2.ID: '8010605'}</Text>
                                     <View style={{flexDirection: 'row'}}>
-                                        <Text style={styles.accBalance}>LKR {this.state.list2.Balance}</Text>
+                                        <Text style={styles.accBalance}>LKR {this.state.list2? this.state.list2.Balance: '25,000'}</Text>
                                         <TouchableOpacity onPress={() => this.props.navigation.navigate('AccountSettings', {
                                             AccountNo: this.state.list2.ID,
                                             navigation: this.props.navigation
@@ -102,23 +102,22 @@ class AccountList extends Component {
                                                     navigation: this.props.navigation
                                                 })}
 
-                                                  style={this.state.isTrue? styles.isfalsebutton: styles.istruebutton}>
-                                                <Icon name="circle-edit-outline" size={40} color="#828264" />
+                                                  style={styles.istruebutton}>
+                                                <Icon name="circle-edit-outline" size={35} color="#828264" />
                                             </View>
                                         </TouchableOpacity>
                                     </View>
-                                    <Text style={styles.accType}>{this.state.list2.Type}</Text>
+                                    <Text style={styles.accType}>{this.state.list2? this.state.list2.Type : 'SAVINGS ACCOUNT'}</Text>
                                 </View>
                             </TouchableOpacity>
-                    </View>
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
-                    <View style={{margin:10, backgroundColor:'white', shadowColor:'black', shadowRadius:2}}>
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
                         <View style={styles.accDetails}>
-                            <Text style={styles.accNum}>{this.state.list1.ID}</Text>
+                            <Text style={styles.accNum}>{this.state.list1? this.state.list1.Name: 'No name'}</Text>
+                            <Text style={styles.accNum}>{this.state.list1? this.state.list1.ID: '1020305'}</Text>
                             <View style={{flexDirection: 'row'}}>
-                                <Text style={styles.accBalance}>LKR {this.state.list1.Balance}</Text>
+                                <Text style={styles.accBalance}>LKR {this.state.list1 ? this.state.list1.Balance : '75,000'}</Text>
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('AccountSettings', {
                                     AccountNo: this.state.list2.ID,
                                     navigation: this.props.navigation
@@ -127,15 +126,14 @@ class AccountList extends Component {
                                         AccountNo: this.state.list2.ID,
                                         navigation: this.props.navigation
                                     })}
-                                          style={this.state.isTrue? styles.isfalsebutton: styles.istruebutton}>
-                                        <Icon name="circle-edit-outline" size={40} color="#828264"/>
+                                          style={styles.istruebutton}>
+                                        <Icon name="circle-edit-outline" size={35} color="#828264"/>
                                     </View>
                                 </TouchableOpacity>
                             </View>
-                            <Text style={styles.accType}>{this.state.list1.Type}</Text>
+                            <Text style={styles.accType}>{this.state.list1 ? this.state.list1.Type: 'JOINT ACCOUNT'}</Text>
                         </View>
                     </TouchableOpacity>
-                    </View>
                     <Dash dashGap={3} style={{width: '90%', height: 3, flexDirection: 'row', marginLeft: '5%'}}/>
                 </View>
             </DrawerLayoutAndroid>)
@@ -144,7 +142,7 @@ class AccountList extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height:'25%',
+        height:'20%',
         width: '100%',
         backgroundColor: '#faee52',
         borderBottomEndRadius:40,
@@ -155,15 +153,15 @@ const styles = StyleSheet.create({
         borderRadius:30,
         marginTop: '4%',
         marginLeft: '43%',
-        width:50,
-        height:50,
+        width:45,
+        height:45,
         padding:4,
         backgroundColor:'#faee52'
     },
     isfalsebutton :{
         fontSize: 20,
         borderRadius:20,
-        marginTop: '4%',
+        marginTop: '1%',
         marginLeft: '10%',
         width:80,
         height:50,
@@ -229,12 +227,12 @@ const styles = StyleSheet.create({
 
     },
     accBalance: {
-        fontSize: 40,
+        fontSize: 30,
         fontWeight: 'bold',
     },
     accType: {
         fontSize: 15,
-        marginBottom: '5%',
+        marginBottom: '3%',
     },
     editButton: {
         alignItems: 'center',
@@ -251,8 +249,8 @@ const styles = StyleSheet.create({
         marginLeft: '70%',
         justifyContent: 'flex-end',
     },spinnerTextStyle: {
-    color: '#FFF'
-}
+        color: '#FFF'
+    }
 });
 
 export default AccountList;

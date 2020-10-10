@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
+import AwesomeAlert from 'react-native-awesome-alerts';
 import NavBar from "./NavBar";
 
 
@@ -17,6 +18,7 @@ const ChangePassword = ({navigation}) => {
     const [value1, onChangeText1] = React.useState('');
     const [value2, onChangeText2] = React.useState('');
     const [error, onChangeError] = React.useState('');
+    const [showAlert,onChangeAlert] = React.useState(false);
 
     const [drawerPosition, setDrawerPosition] = React.useState('left');
     const changeDrawerPosition = () => {
@@ -27,6 +29,14 @@ const ChangePassword = ({navigation}) => {
         }
     };
 
+    function show(){
+        onChangeAlert(true)
+    }
+
+    function hide(){
+        onChangeAlert(false)
+    }
+
     const navigationView = (
         <View style={styles.navigationContainer}>
             <NavBar navigation={navigation}/>
@@ -36,7 +46,7 @@ const ChangePassword = ({navigation}) => {
     function submit() {
         if (value === '123') {
             if (value1 === value2) {
-
+                onChangeAlert(true)
             } else {
                 onChangeError('New Password is not match')
             }
@@ -86,6 +96,24 @@ const ChangePassword = ({navigation}) => {
                         onChangeText={text => onChangeText2(text)}
                         value={value2}
                     />
+
+
+                <AwesomeAlert
+                    show={showAlert}
+                    showProgress={false}
+                    title="Change Password"
+                    message="Change Password Succefully"
+                    closeOnTouchOutside={true}
+                    closeOnHardwareBackPress={false}
+                    showConfirmButton={true}
+                    confirmText="Ok"
+                    confirmButtonColor="#faee52"
+                    onConfirmPressed={() => {
+                        onChangeAlert(false)
+                       navigation.navigate('AccountList')
+                    }}
+                />
+
 
                     <Text style={styles.errorMsg}>{error}</Text>
                     <TouchableOpacity
