@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, DrawerLayoutAndroid, Text} from 'react-native';
 import NavBar from "./NavBar";
 import TabViewExample from "./tab";
-import * as firebase from "firebase";
 
 
 const Interest = ({navigation}) => {
@@ -29,7 +28,7 @@ const Interest = ({navigation}) => {
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <Text style={{color:'white', fontSize:35, marginTop:'26%', marginLeft:'5%'}}>Interest Rates</Text>
+                <Text style={{color:'white', fontSize:35, marginTop:'26%', marginLeft:'22%'}}>Interest Rates</Text>
             </View>
 
                 <TabViewExample/>

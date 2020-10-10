@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import NavBar from "./NavBar";
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 
 const ContactUs = ({navigation}) => {
     const [drawerPosition, setDrawerPosition] = useState('left');
@@ -44,15 +45,30 @@ const ContactUs = ({navigation}) => {
                 </View>
                 <View style={{marginLeft:'25%', marginTop:'2%'}}>
                     <Text style={{fontSize:15}}><Text style={{color:'#ffcc99', fontWeight: 'bold'}}>{'\u2B24'}</Text> <Text style={{color:'black', fontWeight: 'bold'}}>OUR EMERGENCY HELP</Text> </Text>
-                    <Text style={{marginLeft:'15%', fontSize:15}}>+94 2233445</Text>
+                    <View style={{flexDirection: 'row'}} onPress={()=>{Linking.openURL('tel:0112204444');}}>
+                        <View style={{ marginLeft:'10%', marginTop:'2%'}}>
+                            <SimpleLineIcons name="call-out" size={15} color="#ff0055" />
+                        </View>
+                    <Text style={{ marginLeft:'3%',fontSize:20}}>+94 2204444</Text>
+                    </View>
                 </View>
                 <View style={{marginLeft:'25%', marginTop:'2%'}}>
                     <Text style={{fontSize:15}}><Text style={{color:'#ffcc99'}}>{'\u2B24'}</Text> <Text style={{color:'black', fontWeight: 'bold'}}>OUR ACCOUNTS TEAM </Text> </Text>
-                    <Text style={{marginLeft:'15%', fontSize:15}}>+94 2233446</Text>
+                    <View style={{flexDirection: 'row'}} onPress={()=>{Linking.openURL('tel:0112204444');}}>
+                        <View style={{ marginLeft:'10%', marginTop:'2%'}}>
+                            <SimpleLineIcons name="call-out" size={15} color="#ff0055" />
+                        </View>
+                        <Text style={{ marginLeft:'3%',fontSize:20}}>+94 2204445</Text>
+                    </View>
                 </View>
                 <View style={{marginLeft:'25%', marginTop:'2%'}}>
                     <Text style={{fontSize:15}}><Text style={{color:'#ffcc99'}}>{'\u2B24'}</Text> <Text style={{color:'black', fontWeight: 'bold'}}>OUR HR TEAM </Text> </Text>
-                    <Text style={{marginLeft:'15%', fontSize:15}}>+94 2233447</Text>
+                    <View style={{flexDirection: 'row'}} onPress={()=>{Linking.openURL('tel:0112204444');}}>
+                        <View style={{ marginLeft:'10%', marginTop:'2%'}}>
+                            <SimpleLineIcons name="call-out" size={15} color="#ff0055" />
+                        </View>
+                        <Text style={{ marginLeft:'3%',fontSize:20}}>+94 2204446</Text>
+                    </View>
                 </View>
             </View>
             <View>
@@ -94,6 +110,8 @@ const styles = StyleSheet.create({
         height:'35%',
         width: '100%',
         backgroundColor: '#faee52',
+        borderBottomEndRadius:40,
+        borderBottomStartRadius:40
     },
 });
 

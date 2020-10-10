@@ -49,7 +49,7 @@ const Settings = ({navigation}) => {
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <Text style={{color:'white', fontSize:35, marginTop:'10%'}}>Settings</Text>
+                <Text style={{color:'white', fontSize:35, marginTop:'25%'}}>Settings</Text>
             </View>
 
                     <View style={{
@@ -111,9 +111,11 @@ const Settings = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        height:'35%',
+        height:'25%',
         width: '100%',
         backgroundColor: '#faee52',
+        borderBottomEndRadius:40,
+        borderBottomStartRadius:40,
         justifyContent: 'center',
         alignItems: 'center'
     },

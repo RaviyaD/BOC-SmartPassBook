@@ -55,10 +55,12 @@ export default function TabViewExample() {
     const renderTabBar = props => (
         <TabBar
             {...props}
-            indicatorStyle={{ backgroundColor: 'white' }}
-            style={{ backgroundColor: '#ffcc00' , borderRadius:3}}
+            indicatorStyle={{ backgroundColor: '#ffcc00' }}
+            style={{ backgroundColor: '#f3f3f2' }}
+            labelStyle={{ color: '#828264', fontWeight: 'bold'}}
         />
     );
+
 
     return (
         <TabView

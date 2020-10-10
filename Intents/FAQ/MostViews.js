@@ -79,11 +79,11 @@ const styles = StyleSheet.create({
     },
 
     Panel_Holder: {
-        borderWidth:0.8 ,
+        borderWidth:3 ,
         borderColor: '#b2beb5',
         marginVertical: 5,
         width:'90%',
-        borderRadius: 5,
+        borderRadius: 6,
         marginLeft:20,
         justifyContent: "center"
     },
