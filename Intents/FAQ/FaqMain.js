@@ -1,5 +1,6 @@
 
 import React from 'react';
+import * as firebase from "firebase";
 import {Component} from 'react';
 import {
     View,
@@ -49,29 +50,28 @@ export default class FaqMain extends Component {
             drawerPosition:'left',
             setDrawerPosition:'left',
             Ldata:[],
-            searchData: [
-                {
-                    title: '1. Can I view statement in offline mode?',
-                    body: 'In offline mode, you can see last viewed transaction only',
-                },
-                {
-                    title: '2. Do I have to pay for Smart Passbook Service?',
-                    body: 'No. This is a free service to account holders',
-                },
-                {
-                    title: '3. How can I change my login pin?',
-                    body: 'Go to settings and change your pin',
-                },
-                {
-                    title: '4. Can I name my accounts?',
-                    body:
-                        'Yes. You can name your accounts with preferred names for easy identification',
-                },
-            ],
+            searchData: [],
         };
 
     }
 
+    componentDidMount() {
+
+
+        firebase.database().ref('FAQ').on('value', (snapshot) => {
+           let datas = []
+            snapshot.forEach((item) => {
+                console.log(item.val())
+                datas.push(item.val())
+            })
+
+            this.setState({
+                searchData:datas
+            })
+        })
+
+
+    }
     update_Layout = (index) => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
@@ -108,11 +108,7 @@ export default class FaqMain extends Component {
         })
     }
 
-    toChatbot = () => {
 
-        this.props.navigation.navigate('Chatbot');
-
-    };
     changeDrawerPosition = () => {
         if (this.state.drawerPosition === 'left') {
             this.setState({

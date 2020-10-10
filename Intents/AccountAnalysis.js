@@ -24,27 +24,9 @@ export default class AccountAnalysis extends Component {
     constructor(props) {
         super(props);
 
-        const array = [
-            {
-                expanded: false,
-                title: '1. Can I view statement in offline mode?',
-                body: 'In offline mode, you can see last viewed transaction only',
-            },
-            {
-                expanded: false,
-                title: '2. Do I have to pay for Smart Passbook Service?',
-                body: 'No. This is a free service to account holders',
-            },
-            {
-                expanded: false,
-                title: '3. How can I change my login pin?',
-                body: 'Go to settings and change your pin',
-            },
-        ];
 
 
         this.state = {
-            AccordionData: [...array],
             text: '',
             drawerPosition:'left',
             setDrawerPosition:'left',
@@ -54,8 +36,14 @@ export default class AccountAnalysis extends Component {
             dataT : [
                 { name: 'Payments', population: 21500000, color: 'rgba(131, 167, 234, 1)', legendFontColor: '#7F7F7F', legendFontSize: 15 },
                 { name: 'E-Transfers', population: 2800000, color: 'yellow', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-                { name: 'ATM-Withdraws', population: 527612, color: 'red', legendFontColor: '#903c7e', legendFontSize: 15 },
-                { name: 'Other', population: 11920000, color: 'green', legendFontColor: '#137f20', legendFontSize: 15 }
+                { name: 'ATM-Withdraws', population: 5276126, color: 'red', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+                { name: 'Other', population: 11920000, color: 'green', legendFontColor: '#7F7F7F', legendFontSize: 15 }
+            ],
+            dataD : [
+                { name: 'Cheques', population: 615000, color: 'rgba(131, 167, 234, 1)', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+                { name: 'E-Transfers', population: 180000, color: 'yellow', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+                { name: 'Direct-Cash', population: 3276126, color: 'red', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+                { name: 'Other', population: 1920000, color: 'green', legendFontColor: '#7F7F7F', legendFontSize: 15 }
             ]
         }
 
@@ -83,12 +71,7 @@ export default class AccountAnalysis extends Component {
     render() {
         const navigation = this.props.navigation;
         const screenWidth = Dimensions.get('window').width
-        const data = [
-            { name: 'Payments', population: 21500000, color: 'rgba(131, 167, 234, 1)', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-            { name: 'E-Transfers', population: 2800000, color: '#000', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-            { name: 'ATM-Withdraws', population: 527612, color: 'red', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-            { name: 'Other', population: 11920000, color: 'green', legendFontColor: '#7F7F7F', legendFontSize: 15 }
-        ];
+
         return (
             <DrawerLayoutAndroid
                 drawerWidth={300}
@@ -181,7 +164,7 @@ export default class AccountAnalysis extends Component {
 
                 <Text style={styles.subtopic}>Total Deposits - Rs 10 000</Text>
                 <PieChart
-                    data={this.state.dataT}
+                    data={this.state.dataD}
                     width={screenWidth}
                     height={180}
                     accessor="population"
