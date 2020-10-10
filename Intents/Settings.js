@@ -9,12 +9,14 @@ import {
 } from 'react-native';
 import {Button} from 'native-base'
 import NavBar from "./NavBar";
+import AwesomeAlert from "react-native-awesome-alerts";
 
 const Settings = ({navigation}) => {
     const [value, onChangeText] = React.useState('');
     const [value1, onChangeText1] = React.useState('');
     const [value2, onChangeText2] = React.useState('');
     const [error, onChangeError] = React.useState('');
+    const [showAlert,onChangeAlert] = React.useState(false);
 
     const [drawerPosition, setDrawerPosition] = React.useState('left');
     const changeDrawerPosition = () => {
@@ -124,14 +126,39 @@ const Settings = ({navigation}) => {
 
                     </View>
 
-                    <View style={{
+            <AwesomeAlert
+                show={showAlert}
+                showProgress={false}
+                title="Deactivate"
+                message="Are you sure to deactivate device"
+                closeOnTouchOutside={true}
+                closeOnHardwareBackPress={false}
+                showConfirmButton={true}
+                showCancelButton={true}
+                confirmText="Ok"
+                confirmButtonColor='#faee52'
+                onConfirmPressed={() => {
+                    onChangeAlert(false)
+                    navigation.navigate('Login')
+                }}
+                cancelText='No'
+                onCancelPressed={() => {
+                    onChangeAlert(false)
+                }}
+            />
+
+
+
+
+            <View style={{
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
                         <Button info large style={{
                             width: '70%', textAlign: 'center', justifyContent: 'center',
                             alignItems: 'center', marginTop: 40,left:'40%',backgroundColor:'#faee52'
-                        }}>
+                        }}
+                        onPress={() => onChangeAlert(true)}>
                             <Text style={{
                                 justifyContent: 'center',
                                 alignItems: 'center',

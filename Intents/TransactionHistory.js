@@ -12,6 +12,8 @@ import {Row, Col} from 'react-native-easy-grid'
 import NavBar from "./NavBar";
 import Spinner from "react-native-loading-spinner-overlay";
 import * as firebase from "firebase";
+import Share from "react-native-share";
+
 const credit = require('../assets/left.png')
 const debit = require('../assets/right.png')
 
@@ -25,6 +27,15 @@ const debit = require('../assets/right.png')
 //     {id: 6, date: '06/03/2020', amount: '+5000.00', balance: 'LKR 55000.00', color: 'blue', title: 'Boundry 2',img:debit},
 //     {id: 7, date: '04/03/2020', amount: '+4500.00', balance: 'LKR 50000.00', color: 'blue', title: 'Deposite',img:debit},
 // ]
+
+const shareOptions = {
+    title: 'Share via',
+    message: 'some message',
+    url: 'some share url',
+    social: Share.Social.WHATSAPP,
+    whatsAppNumber: "9199999999",  // country code + phone number
+    filename: 'test' , // only for base64 file in Android
+};
 
 class TransactionHistory extends Component {
 
@@ -172,6 +183,7 @@ class TransactionHistory extends Component {
                                     <DialogButton
                                         text="Share"
                                         onPress={() => {
+                                            Share.open(shareOptions).then(this.setState({visible: false}))
                                         }}
                                     />
                                     <DialogButton
