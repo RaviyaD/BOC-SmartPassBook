@@ -1,5 +1,17 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, DrawerLayoutAndroid,Image} from "react-native";
+import {
+    StyleSheet,
+    View,
+    Text,
+    SafeAreaView,
+    ScrollView,
+    Modal,
+    Alert,
+    DrawerLayoutAndroid,
+    Image,
+    BackHandler,
+    Picker
+} from "react-native";
 import {Card, CardItem, Button, Body, Container, Content} from "native-base";
 import Dialog, {
     DialogContent,
@@ -11,19 +23,31 @@ import Dialog, {
 import {Row, Col} from 'react-native-easy-grid'
 import NavBar from "./NavBar";
 import Spinner from "react-native-loading-spinner-overlay";
+import * as firebase from "firebase";
+import Share from "react-native-share";
+
 const credit = require('../assets/left.png')
 const debit = require('../assets/right.png')
 
-const array = [
-    {id: 0, date: '04/04/2020', amount: '+15500.00', balance: 'LKR 25000.00', color: 'blue', title: 'Boundry 1',img:debit},
-    {id: 1, date: '31/03/2020', amount: '+500.00', balance: 'LKR 9500.00', color: 'blue', title: 'Interest',img:debit},
-    {id: 2, date: '28/03/2020', amount: '-1000.00', balance: 'LKR 9000.00', color: 'red', title: 'Card Payment',img:credit},
-    {id: 3, date: '22/03/2020', amount: '-2000.00', balance: 'LKR 10000.00', color: 'red', title: 'Monthly Charge',img:credit},
-    {id: 4, date: '15/03/2020', amount: '+4000.00', balance: 'LKR 12000.00', color: 'blue', title: 'Bill Payment',img:debit},
-    {id: 5, date: '12/03/2020', amount: '-2000.00', balance: 'LKR 8000.00', color: 'red', title: 'Dialog Payment',img:credit},
-    {id: 6, date: '06/03/2020', amount: '+5000.00', balance: 'LKR 10000.00', color: 'blue', title: 'Boundry 2',img:debit},
-    {id: 7, date: '04/03/2020', amount: '+4500.00', balance: 'LKR 5000.00', color: 'blue', title: 'Deposite',img:debit},
-]
+// const array = [
+//     {id: 0, date: '04/04/2020', amount: '+20500.00', balance: 'LKR 75000.00', color: 'blue', title: 'Boundry 1',img:debit},
+//     {id: 1, date: '31/03/2020', amount: '+500.00', balance: 'LKR 54500.00', color: 'blue', title: 'Interest',img:debit},
+//     {id: 2, date: '28/03/2020', amount: '-1000.00', balance: 'LKR 54000.00', color: 'red', title: 'Card Payment',img:credit},
+//     {id: 3, date: '22/03/2020', amount: '-2000.00', balance: 'LKR 55000.00', color: 'red', title: 'Monthly Charge',img:credit},
+//     {id: 4, date: '15/03/2020', amount: '+4000.00', balance: 'LKR 57000.00', color: 'blue', title: 'Bill Payment',img:debit},
+//     {id: 5, date: '12/03/2020', amount: '-2000.00', balance: 'LKR 53000.00', color: 'red', title: 'Dialog Payment',img:credit},
+//     {id: 6, date: '06/03/2020', amount: '+5000.00', balance: 'LKR 55000.00', color: 'blue', title: 'Boundry 2',img:debit},
+//     {id: 7, date: '04/03/2020', amount: '+4500.00', balance: 'LKR 50000.00', color: 'blue', title: 'Deposite',img:debit},
+// ]
+
+const shareOptions = {
+    title: 'Share via',
+    message: 'some message',
+    url: 'some share url',
+    social: Share.Social.WHATSAPP,
+    whatsAppNumber: "9199999999",  // country code + phone number
+    filename: 'test' , // only for base64 file in Android
+};
 
 class TransactionHistory extends Component {
 
@@ -33,8 +57,12 @@ class TransactionHistory extends Component {
             visible: false,
             drawerPosition: 'left',
             setDrawerPosition: 'left',
-            spinner: true
+            spinner: true,
+            array:[],
+            selectedValue:''
         }
+        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+
     }
 
     componentDidMount() {
@@ -42,7 +70,33 @@ class TransactionHistory extends Component {
             this.setState({
                 spinner: !this.state.spinner
             });
-        }, 3000);
+        }, 1500);
+      let a =[]
+        var firebaseRef=firebase.database().ref('Transaction').child(this.props.navigation.state.params.type);
+    firebaseRef.on('value', (snapshot) => {
+        snapshot.forEach((item) => {
+            a.push(item.val())
+        })
+    })
+        this.setState({array:a})
+    }
+
+    componentWillMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+    }
+
+    handleBackButtonClick() {
+        if(this.state.visible) {
+            this.setState({visible: false})
+        }
+        // }else {
+        //     this.props.navigation.goBack('AccountList');
+        //     return true;
+        // }
     }
 
     changeDrawerPosition = () => {
@@ -69,6 +123,7 @@ class TransactionHistory extends Component {
 
     render() {
         const navigation = this.props.navigation;
+        const {array} = this.state
         return (
             <DrawerLayoutAndroid
                 drawerWidth={300}
@@ -90,7 +145,7 @@ class TransactionHistory extends Component {
                                 <View style={{marginLeft: '5%'}}>
                                 <Button light bordered style={{
                                     left: 0,
-                                    width: 150,
+                                    width: 130,
                                     color: 'white',
                                     top: 10,
                                     borderColor: '#111111',
@@ -99,23 +154,37 @@ class TransactionHistory extends Component {
                                         onPress={() => {
                                             this.setState({visible: true});
                                         }}>
+
+
+
                                     <Text style={{left: 10, fontSize: 16, fontWeight: 'bold'}}>Account Details</Text>
 
                                 </Button>
 
-                                <Text style={{marginTop: 13, fontSize: 15, fontStyle: 'italic', marginLeft: '2%'}}>Last Updated On</Text>
 
-                                <Text style={{ fontSize: 20}}>
+
+                                <Text style={{marginTop: 13, fontSize: 15, fontStyle: 'italic'}}>Last Update On</Text>
+
+                                <Text style={{margin: 8, fontSize: 20}}>
                                     <Text> Today </Text>
                                     04.00PM</Text>
                                 </View>
                             </Col>
                             <Col style={{backgroundColor: '#faee52', height: 120, alignItems: 'center', top: 0}}>
-                                <Text style={{margin: 10, fontSize: 20}}>Available Balance</Text>
+                                <Picker
+                                    selectedValue={this.state.selectedValue}
+                                    style={{ height: 20, width: 160,left:5, borderColor:'#111111',top:10,borderRadius: 15,fontWeight: 'bold' }}
+                                    onValueChange={(itemValue, itemIndex) => this.setState({selectedValue:itemValue})}
+                                >
+                                    <Picker.Item label="Last 15 TRX" value="java" />
+                                    <Picker.Item label="Last 30 TRX" value="js" />
+                                    <Picker.Item label="Last 50 TRX" value="js" />
+                                </Picker>
+                                <Text style={{marginTop: 10, fontSize: 20}}>Available Balance</Text>
 
-                                <Text style={{margin: 8, fontSize: 20}}>
+                                <Text style={{marginLeft: 8, fontSize: 20}}>
                                     <Text>LKR </Text>
-                                    <Text style={{margin: 8, fontSize: 35, fontWeight: 'bold'}}>25000</Text>
+                                    <Text style={{margin: 8, fontSize: 35, fontWeight: 'bold'}}>{this.props.navigation.state.params.balance}</Text>
                                     <Text>.00</Text> </Text>
                             </Col>
                         </Row>
@@ -142,6 +211,7 @@ class TransactionHistory extends Component {
                                     <DialogButton
                                         text="Share"
                                         onPress={() => {
+                                            Share.open(shareOptions).then(this.setState({visible: false}))
                                         }}
                                     />
                                     <DialogButton
@@ -155,25 +225,26 @@ class TransactionHistory extends Component {
                         >
                             <DialogContent style={{width: 350, height: 250, alignItems: 'center', margin: 10}}>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account No :
-                                    <Text style={{fontSize: 25, fontWeight: 'bold'}}>1235454234</Text></Text>
-
+                                    <Text style={{fontSize: 25, fontWeight: 'bold'}}>{this.props.navigation.state.params.id}</Text></Text>
+<View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account Name :
                                     <Text style={{fontSize: 25, fontWeight: 'bold'}}>H.D.L Lakshan</Text></Text>
-
+                                <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account Branch :
                                     <Text style={{fontSize: 25, fontWeight: 'bold'}}>Kalawana</Text></Text>
-
+                                <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account Type :
-                                    <Text style={{fontSize: 25, fontWeight: 'bold'}}>Saving</Text></Text>
+                                    <Text style={{fontSize: 15, fontWeight: 'bold'}}>{this.props.navigation.state.params.at}</Text></Text>
+                                <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
                             </DialogContent>
                         </Dialog>
-
+<View style={{backgroundColor:'#faee52'}}>
                         <Card style={{top: 0}}>
                             <CardItem>
                                 <Body style={{alignItems: 'center'}}>
 
                                     <Text style={{fontSize: 18}}>
-                                        Saving Account - XXXXXXXX0987
+                                        {this.props.navigation.state.params.at} - {this.props.navigation.state.params.id}
                                     </Text>
                                 </Body>
                             </CardItem>
@@ -220,6 +291,7 @@ class TransactionHistory extends Component {
                                 </Card>
                             })
                         }
+</View>
                     </Content>
                 </Container>
             </DrawerLayoutAndroid>
@@ -251,6 +323,32 @@ const styles = StyleSheet.create({
         height: 20
     },spinnerTextStyle: {
         color: '#FFF'
-    }
+    },input: {
+
+        height: 50,
+        width:'90%',
+        paddingLeft: 15,
+        borderRadius: 5,
+        borderColor: "#faee52",
+        borderWidth: 2,
+        fontSize: 18.5,
+        fontFamily: 'sans-serif-condensed',
+        marginBottom:15,
+        marginLeft:25,
+        marginRight:25,
+        marginTop:20,
+        backgroundColor:"white"
+
+
+    },greyText: {
+        textAlign: 'left',
+        paddingTop: 20,
+        fontSize: 18,
+        color: '#363636',
+        width:'80%',
+        paddingLeft: 15,
+        marginLeft:15
+
+    },
 })
 

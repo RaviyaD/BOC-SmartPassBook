@@ -20,9 +20,7 @@ class AccountList extends Component {
         spinner: true,
         list1:[],
         list2:[],
-        isTrue:false,
-        name2: false,
-        name1:false
+        isTrue:false
     };
 
     componentDidMount() {
@@ -153,6 +151,7 @@ const styles = StyleSheet.create({
     istruebutton: {
         fontSize: 20,
         borderRadius:30,
+        marginTop: '4%',
         marginLeft: '43%',
         width:45,
         height:45,
@@ -250,8 +249,8 @@ const styles = StyleSheet.create({
         marginLeft: '70%',
         justifyContent: 'flex-end',
     },spinnerTextStyle: {
-    color: '#FFF'
-}
+        color: '#FFF'
+    }
 });
 
 export default AccountList;
