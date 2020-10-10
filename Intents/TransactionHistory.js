@@ -161,14 +161,7 @@ class TransactionHistory extends Component {
 
                                 </Button>
 
-                                    <Picker
-                                        selectedValue={this.state.selectedValue}
-                                        style={{ height: 50, width: 150, position: 'absolute',left:130, borderColor:'#111111',top:10,borderRadius: 15,fontWeight: 'bold' }}
-                                        onValueChange={(itemValue, itemIndex) => this.setState({selectedValue:itemValue})}
-                                    >
-                                        <Picker.Item label="15 TRX" value="java" />
-                                        <Picker.Item label="30 TRX" value="js" />
-                                    </Picker>
+
 
                                 <Text style={{marginTop: 13, fontSize: 15, fontStyle: 'italic'}}>Last Update On</Text>
 
@@ -178,9 +171,18 @@ class TransactionHistory extends Component {
                                 </View>
                             </Col>
                             <Col style={{backgroundColor: '#faee52', height: 120, alignItems: 'center', top: 0}}>
-                                <Text style={{margin: 10, fontSize: 20}}>Available Balance</Text>
+                                <Picker
+                                    selectedValue={this.state.selectedValue}
+                                    style={{ height: 20, width: 160,left:5, borderColor:'#111111',top:10,borderRadius: 15,fontWeight: 'bold' }}
+                                    onValueChange={(itemValue, itemIndex) => this.setState({selectedValue:itemValue})}
+                                >
+                                    <Picker.Item label="Last 15 TRX" value="java" />
+                                    <Picker.Item label="Last 30 TRX" value="js" />
+                                    <Picker.Item label="Last 50 TRX" value="js" />
+                                </Picker>
+                                <Text style={{marginTop: 10, fontSize: 20}}>Available Balance</Text>
 
-                                <Text style={{margin: 8, fontSize: 20}}>
+                                <Text style={{marginLeft: 8, fontSize: 20}}>
                                     <Text>LKR </Text>
                                     <Text style={{margin: 8, fontSize: 35, fontWeight: 'bold'}}>{this.props.navigation.state.params.balance}</Text>
                                     <Text>.00</Text> </Text>
@@ -236,7 +238,7 @@ class TransactionHistory extends Component {
                                 <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
                             </DialogContent>
                         </Dialog>
-<View style={{backgroundColor:'#efef8b'}}>
+<View style={{backgroundColor:'#faee52'}}>
                         <Card style={{top: 0}}>
                             <CardItem>
                                 <Body style={{alignItems: 'center'}}>
