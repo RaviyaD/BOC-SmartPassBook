@@ -6,6 +6,7 @@ import {
     Text, TouchableOpacity, TextInput, ImageBackground, StyleSheet, DrawerLayoutAndroid,
     ActivityIndicator,
     Alert,
+
     FlatList, Platform,
     LayoutAnimation,
     ScrollView,
@@ -138,46 +139,51 @@ export default class FaqMain extends Component {
                 drawerPosition={this.state.drawerPosition}
                 renderNavigationView={() => this.navigationView()}>
                 <View style={styles.container}>
-                    <ImageBackground style={styles.backgroundImage} source={require('../../assets/wallpaper.jpg')}>
-                        <Text style={styles.topic}>FAQs</Text>
-                        <TextInput
-                            style={styles.input}
-                            underlineColorAndroid="transparent"
-                            placeholder="Search questions by key word..."
-                            placeholderTextColor="#625F56"
-                            autoCapitalize="none"
-                            onChangeText={(value) => {
-                                this.searchFilterFunction(value, this.state.searchData);
-                            }}
-                        />
-                        {this.state.Ldata.map((item, index) => {
+                    <Text style={{color:'white', fontSize:35, marginTop:'10%', marginLeft:'10%',fontWeight: 'bold'}}>FAQs</Text>
 
-                            return <Text style={styles.greyText}>{item.title}</Text>
-                        })}
-                        <View style={styles.subContainer}>
-                            <ScrollView
-                                contentContainerStyle={{paddingHorizontal: 10, paddingVertical:5,height: '90%'}}>
-                                {this.state.AccordionData.map((item, key) => (
-                                    <MostViews
-                                        key={key}
-                                        onClickFunction={this.update_Layout.bind(this, key)}
-                                        item={item}
-                                    />
-                                ))}
-                            </ScrollView>
+                </View>
 
 
-                        </View>
+                <TextInput
+                    style={styles.input}
+                    underlineColorAndroid="transparent"
+                    placeholder="Search questions by key word..."
+                    placeholderTextColor="#625F56"
+                    autoCapitalize="none"
+                    onChangeText={(value) => {
+                        this.searchFilterFunction(value, this.state.searchData);
+                    }}
+                />
+                {this.state.Ldata.map((item, index) => {
+
+                    return <Text style={styles.greyText}>{item.title}</Text>
+                })}
+                <View style={styles.subContainer}>
+                    <ScrollView
+                        contentContainerStyle={{paddingHorizontal: 10, paddingVertical:5,height: '90%'}}>
+                        {this.state.AccordionData.map((item, key) => (
+                            <MostViews
+                                key={key}
+                                onClickFunction={this.update_Layout.bind(this, key)}
+                                item={item}
+                            />
+                        ))}
 
                         <TouchableOpacity
                             onPress={() => navigation.navigate('Chatbot', { navigation: navigation})}
                             style={styles.submitButton}>
                             <Text style={styles.submitButtonText}> Ask a Question </Text>
                         </TouchableOpacity>
+                    </ScrollView>
 
-                    </ImageBackground>
 
                 </View>
+
+
+
+
+
+
             </DrawerLayoutAndroid>
         );
     }
@@ -185,7 +191,9 @@ export default class FaqMain extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height:'25%',
+        width: '100%',
+        backgroundColor: '#faee52',
     },
     subContainer: {
         flex: 1,
@@ -193,51 +201,43 @@ const styles = StyleSheet.create({
         paddingTop: Platform.OS === 'ios' ? 20 : 0,
         height:"70%"
     },
-    topic: {
-        fontWeight: 'bold',
-        fontSize: 30,
-        textAlign: 'center',
-        marginBottom:50,
-        marginTop:100
-    },
     greyText: {
         textAlign: 'left',
         paddingTop: 20,
         fontSize: 18,
         color: '#363636',
         width:'80%',
-        paddingLeft: 15
+        paddingLeft: 15,
+        marginLeft:15
 
     },
 
-    backgroundImage: {
-        flex: 1,
-        height: '100%',
-        width: '100%',
-        resizeMode: 'stretch',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-    },
     input: {
-        margin: 15,
+
         height: 50,
-        width:'72%',
+        width:'90%',
         paddingLeft: 15,
         borderRadius: 5,
         borderColor: "#faee52",
         borderWidth: 2,
         fontSize: 18.5,
         fontFamily: 'sans-serif-condensed',
-        marginBottom:5
+        marginBottom:15,
+        marginLeft:25,
+        marginRight:25,
+        marginTop:20,
+        backgroundColor:"white"
+
 
     },
 
     submitButton: {
         backgroundColor: '#000000',
-        padding: 10,
-        margin: 15,
+
         height: 50,
         width:160,
+        marginTop:'10%',
+        marginLeft:'30%',
         borderRadius: 400,
         justifyContent:"center"
     },

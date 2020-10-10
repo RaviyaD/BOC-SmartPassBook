@@ -3,14 +3,20 @@ import {Component} from 'react';
 import {
     View,
     Text, TouchableOpacity, TextInput, ImageBackground, StyleSheet, DrawerLayoutAndroid,
-    ActivityIndicator,
-    Alert,
-    FlatList, Platform,
-    LayoutAnimation,
-    ScrollView,
-    UIManager,
+    AppRegistry,
+    Button, Dimensions, ScrollView
 } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 import NavBar from "./NavBar";
+
+
+
+import {
+
+    PieChart,
+
+} from 'react-native-chart-kit'
+
 
 
 export default class AccountAnalysis extends Component {
@@ -43,9 +49,15 @@ export default class AccountAnalysis extends Component {
             drawerPosition:'left',
             setDrawerPosition:'left',
             Ldata:[],
-            startDate:"",
-            endDate:""
-        };
+            startDate:"2020-05-01",
+            endDate:"2020-10-05",
+            dataT : [
+                { name: 'Payments', population: 21500000, color: 'rgba(131, 167, 234, 1)', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+                { name: 'E-Transfers', population: 2800000, color: 'yellow', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+                { name: 'ATM-Withdraws', population: 527612, color: 'red', legendFontColor: '#903c7e', legendFontSize: 15 },
+                { name: 'Other', population: 11920000, color: 'green', legendFontColor: '#137f20', legendFontSize: 15 }
+            ]
+        }
 
     }
 
@@ -70,32 +82,130 @@ export default class AccountAnalysis extends Component {
 
     render() {
         const navigation = this.props.navigation;
+        const screenWidth = Dimensions.get('window').width
+        const data = [
+            { name: 'Payments', population: 21500000, color: 'rgba(131, 167, 234, 1)', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+            { name: 'E-Transfers', population: 2800000, color: '#000', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+            { name: 'ATM-Withdraws', population: 527612, color: 'red', legendFontColor: '#7F7F7F', legendFontSize: 15 },
+            { name: 'Other', population: 11920000, color: 'green', legendFontColor: '#7F7F7F', legendFontSize: 15 }
+        ];
         return (
             <DrawerLayoutAndroid
                 drawerWidth={300}
                 drawerPosition={this.state.drawerPosition}
                 renderNavigationView={() => this.navigationView()}>
                 <View style={styles.container}>
-                    <ImageBackground style={styles.backgroundImage} source={require('../assets/wallpaper.jpg')}>
-                        <Text style={styles.topic}>Bank Statement Analysis</Text>
 
-                        <View style={styles.row}>
-                            <View style={styles.inputWrap}>
-
-
-
-                            </View>
-
-                            <View style={styles.inputWrap}>
-
-                            </View>
-
-
-                        </View>
-
-                    </ImageBackground>
-
+                    <Text style={{color:'white', fontSize:30, marginTop:'20%', marginLeft:'5%'}}>Bank Statement Analysis</Text>
                 </View>
+                <View style={styles.row}>
+                    <DatePicker
+                        style={{width: 170}}
+                        date={this.state.startDate}
+                        mode="date"
+                        placeholder="Start Date"
+                        format="YYYY-MM-DD"
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        customStyles={{
+                            dateIcon: {
+                                position: 'absolute',
+                                left: 0,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 36
+                            }
+                            // ... You can check the source to find the other keys.
+                        }}
+                        onDateChange={(date2) => {this.setState({startDate: date2})}}
+                    />
+                    <DatePicker
+                        style={{width: 170,marginLeft:'3%'}}
+                        date={this.state.endDate}
+                        mode="date"
+                        placeholder="End Date"
+                        format="YYYY-MM-DD"
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        customStyles={{
+                            dateIcon: {
+                                position: 'absolute',
+                                left: 0,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 36
+                            }
+                            // ... You can check the source to find the other keys.
+                        }}
+                        onDateChange={(date1) => {this.setState({endDate: date1})}}
+                    />
+                </View>
+                <View style={styles.row}>
+                    <View style={styles.inputWrap}>
+                        <Text style={styles.greyText}>Beginning Balance : Rs. 40000</Text>
+                        <Text style={styles.greyText}>Ending Balance : Rs. 20000</Text>
+                    </View>
+                </View>
+
+                <Text style={styles.subtopic}>Total Spendings - Rs 30 000</Text>
+
+                <PieChart
+                    data={this.state.dataT}
+                    width={screenWidth}
+                    height={180}
+                    accessor="population"
+                    backgroundColor="transparent"
+                    paddingLeft="1"
+
+                    chartConfig={{
+                        backgroundColor: '#e26a00',
+                        backgroundGradientFrom: '#fb8c00',
+                        backgroundGradientTo: '#ffa726',
+                        decimalPlaces: 2, // optional, defaults to 2dp
+                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                        style: {
+                            borderRadius: 16,
+                        }
+                    }}
+
+                    style={{
+                        marginVertical: 8,
+                        borderRadius: 16,
+                        marginRight:90
+                    }}
+                />
+
+                <Text style={styles.subtopic}>Total Deposits - Rs 10 000</Text>
+                <PieChart
+                    data={this.state.dataT}
+                    width={screenWidth}
+                    height={180}
+                    accessor="population"
+                    backgroundColor="transparent"
+                    paddingLeft="1"
+
+                    chartConfig={{
+                        backgroundColor: '#e26a00',
+                        backgroundGradientFrom: '#fb8c00',
+                        backgroundGradientTo: '#ffa726',
+                        decimalPlaces: 2, // optional, defaults to 2dp
+                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                        style: {
+                            borderRadius: 16,
+                        }
+                    }}
+
+                    style={{
+                        marginVertical: 8,
+                        borderRadius: 16,
+                        marginRight:90
+                    }}
+                />
+
             </DrawerLayoutAndroid>
         );
     }
@@ -103,14 +213,18 @@ export default class AccountAnalysis extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+
+        height:'20%',
+        width: '100%',
+        backgroundColor: '#faee52',
     },
-    topic: {
+
+    subtopic: {
         fontWeight: 'bold',
-        fontSize: 30,
-        textAlign: 'center',
-        marginBottom:50,
-        marginTop:100
+        fontSize: 18,
+        textAlign: 'left',
+        marginLeft:'6%'
+
     },
     greyText: {
         textAlign: 'left',
@@ -118,18 +232,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#363636',
         width:'80%',
+        marginBottom:10,
 
 
     },
 
-    backgroundImage: {
-        flex: 1,
-        height: '100%',
-        width: '100%',
-        resizeMode: 'stretch',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-    },
     input: {
         margin: 15,
         height: 50,
@@ -143,13 +250,13 @@ const styles = StyleSheet.create({
         marginBottom: 30
 
     },
-
     submitButton: {
         backgroundColor: '#000000',
-        padding: 10,
-        margin: 15,
-        height: 50,
-        width:160,
+
+        height: 45,
+        width:220,
+        marginTop:10,
+        marginLeft:'25%',
         borderRadius: 400,
         justifyContent:"center"
     },
@@ -159,24 +266,17 @@ const styles = StyleSheet.create({
         fontSize:16
     },
     row: {
-        flex: 1,
-        marginLeft:30,
+        marginTop:'5%',
+        marginLeft:'6%',
+        marginBottom:10,
         flexDirection: "row"
     },
     inputWrap: {
         flex: 1,
         borderColor: "#cccccc",
         borderBottomWidth: 1,
-        marginBottom: 10
+        marginBottom: 10,
+
     },
-    inputdate: {
-        fontSize: 14,
-        marginBottom: -12,
-        color: "#6a4595"
-    },
-    inputcvv: {
-        fontSize: 14,
-        marginBottom: -12,
-        color: "#6a4595"
-    }
+
 });
