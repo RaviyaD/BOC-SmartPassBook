@@ -123,7 +123,7 @@ class Login extends Component {
         )
         return (
             <View style={styles.container}>
-                { !this.state.isConnected ? <View style={{width:'100%',height:25,backgroundColor: 'red'}}><Text style={{textAlign:'center',textColor: 'white'}}>No Internet Connection</Text></View> : null }
+                { !this.state.isConnected ? <View style={{width:'100%',height:25,backgroundColor: 'red'}}><Text style={{textAlign:'center'}}>No Internet Connection</Text></View> : null }
                 {
                     (this.state.isVisible === true) ? Splash_Screen : loginView
                 }
