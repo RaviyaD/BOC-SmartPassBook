@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, SafeAreaView, ScrollView, Modal, Alert, DrawerLayoutAndroid,Image} from "react-native";
+import {StyleSheet, View, Text, SafeAreaView, ScrollView, Modal, Alert, DrawerLayoutAndroid,Image,BackHandler} from "react-native";
 import {Card, CardItem, Button, Body, Container, Content} from "native-base";
 import Dialog, {
     DialogContent,
@@ -34,7 +34,8 @@ class TransactionHistory extends Component {
             visible: false,
             drawerPosition: 'left',
             setDrawerPosition: 'left',
-            spinner: true
+            spinner: true,
+            array:[]
         }
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
 
@@ -132,7 +133,7 @@ class TransactionHistory extends Component {
                                     <Text style={{left: 10, fontSize: 16, fontWeight: 'bold'}}>Account Details</Text>
 
                                 </Button>
-                                <Text style={{marginTop: 10, fontSize: 15, fontStyle: 'italic'}}>Last Update On</Text>
+                                <Text style={{marginTop: 13, fontSize: 15, fontStyle: 'italic'}}>Last Update On</Text>
 
                                 <Text style={{margin: 8, fontSize: 20}}>
                                     <Text> Today </Text>
@@ -203,7 +204,7 @@ class TransactionHistory extends Component {
                                 <Body style={{alignItems: 'center'}}>
 
                                     <Text style={{fontSize: 18}}>
-                                        Saving Account - XXXXXXXX0987
+                                        {this.props.navigation.state.params.at} - {this.props.navigation.state.params.id}
                                     </Text>
                                 </Body>
                             </CardItem>
