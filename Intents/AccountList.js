@@ -80,7 +80,7 @@ class AccountList extends Component {
                 />
                 <View style={styles.container}>
                     <Text
-                        style={{color: 'white', fontSize: 35, marginTop: '25%', marginLeft: '5%', fontWeight: 'bold'}}>Account
+                        style={{color: 'white', fontSize: 35, marginTop: '25%', marginLeft: '22%', fontWeight: 'bold'}}>Account
                         List</Text>
                 </View>
                 <View>
@@ -143,6 +143,8 @@ const styles = StyleSheet.create({
         height:'25%',
         width: '100%',
         backgroundColor: '#faee52',
+        borderBottomEndRadius:40,
+        borderBottomStartRadius:40
     },
     innerContainer:{
         height:'80%',

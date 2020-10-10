@@ -86,7 +86,8 @@ class TransactionHistory extends Component {
 
                         />
                         <Row style={{marginTop: 5, top: 0}}>
-                            <Col style={{backgroundColor: '#fafaac', height: 120}}>
+                            <Col style={{backgroundColor: '#faee52', height: 120}}>
+                                <View style={{marginLeft: '5%'}}>
                                 <Button light bordered style={{
                                     left: 0,
                                     width: 150,
@@ -101,13 +102,15 @@ class TransactionHistory extends Component {
                                     <Text style={{left: 10, fontSize: 16, fontWeight: 'bold'}}>Account Details</Text>
 
                                 </Button>
-                                <Text style={{marginTop: 10, fontSize: 15, fontStyle: 'italic'}}>Last Update On</Text>
 
-                                <Text style={{margin: 8, fontSize: 20}}>
+                                <Text style={{marginTop: 13, fontSize: 15, fontStyle: 'italic', marginLeft: '2%'}}>Last Updated On</Text>
+
+                                <Text style={{ fontSize: 20}}>
                                     <Text> Today </Text>
                                     04.00PM</Text>
+                                </View>
                             </Col>
-                            <Col style={{backgroundColor: '#fafaac', height: 120, alignItems: 'center', top: 0}}>
+                            <Col style={{backgroundColor: '#faee52', height: 120, alignItems: 'center', top: 0}}>
                                 <Text style={{margin: 10, fontSize: 20}}>Available Balance</Text>
 
                                 <Text style={{margin: 8, fontSize: 20}}>
