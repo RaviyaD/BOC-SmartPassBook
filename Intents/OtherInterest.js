@@ -54,33 +54,33 @@ export default class OtherInterest extends Component{
                 <View>
                     <View style={styles.rate}>
                         <Icon name="star-half-empty" color="#828264" size={23} />
-                        <Text style={{fontSize: 20,marginLeft:'6%'}}>
+                        <Text style={{fontSize: 15,marginLeft:'6%'}}>
                             FIXED DEPOSIT {'                       '} {this.state.fdepo}
                         </Text>
                     </View>
 
                     <View style={styles.rate}>
                         <Icon name="star-half-empty" color="#828264" size={23} />
-                        <Text style={{fontSize: 20,marginLeft:'6%'}}>
+                        <Text style={{fontSize: 15,marginLeft:'6%'}}>
                             CURRENT ACCOUNT {'             '} {this.state.cacc}</Text>
                     </View>
 
                     <View style={styles.rate}>
                         <Icon name="star-half-empty" color="#828264" size={23} />
-                        <Text style={{fontSize: 20,marginLeft:'6%'}}>
+                        <Text style={{fontSize: 15,marginLeft:'6%'}}>
                             LOAN {'                                       '} {this.state.loan}
                         </Text>
                     </View>
                     <View style={styles.rate}>
                         <Icon name="star-half-empty" color="#828264" size={23} />
-                        <Text style={{fontSize: 20,marginLeft:'6%'}}>
+                        <Text style={{fontSize: 15,marginLeft:'6%'}}>
                             BOC TEEN {'                                  '} {this.state.bocteen}
                         </Text>
                     </View>
 
                     <View style={styles.rate}>
                         <Icon name="star-half-empty" color="#828264" size={23} />
-                        <Text style={{fontSize: 20,marginLeft:'6%'}}>
+                        <Text style={{fontSize: 15,marginLeft:'6%'}}>
                             SENIOR CITIZENS {'                  '} {this.state.scit}
                         </Text>
                     </View>
@@ -92,7 +92,7 @@ export default class OtherInterest extends Component{
 const styles = StyleSheet.create({
     rate:{
         backgroundColor:'#e6e6e6',
-        height:'17%',
+        height:'15%',
         width:'98%',
         padding: 17,
         marginTop:'2%',

@@ -37,10 +37,10 @@ const ContactUs = ({navigation}) => {
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
                 <Text style={{color:'white', fontSize:35, marginTop:'10%', marginLeft:'25%'}}>Get In Touch</Text>
-                <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, marginLeft:'35%', borderWidth: 2, marginTop:'5%'}} source={require('../assets/tele.png')}/>
+                <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, marginLeft:'35%', borderWidth: 2}} source={require('../assets/tele.png')}/>
             </View>
             <View>
-                <View style={{marginLeft:'45%', marginTop:'3%'}}>
+                <View style={{marginLeft:'45%', marginTop:'15%'}}>
                     <Icon name="old-phone" size={25} color="#ff0055" />
                 </View>
                 <View style={{marginLeft:'25%', marginTop:'2%'}}>
@@ -49,7 +49,7 @@ const ContactUs = ({navigation}) => {
                         <View style={{ marginLeft:'10%', marginTop:'2%'}}>
                             <SimpleLineIcons name="call-out" size={15} color="#ff0055" />
                         </View>
-                    <Text style={{ marginLeft:'3%',fontSize:20}}>+94 2204444</Text>
+                    <Text style={{ marginLeft:'3%',fontSize:17, color:'blue', textDecorationLine: 'underline'}}>+94 2204444</Text>
                     </View>
                 </View>
                 <View style={{marginLeft:'25%', marginTop:'2%'}}>
@@ -58,7 +58,7 @@ const ContactUs = ({navigation}) => {
                         <View style={{ marginLeft:'10%', marginTop:'2%'}}>
                             <SimpleLineIcons name="call-out" size={15} color="#ff0055" />
                         </View>
-                        <Text style={{ marginLeft:'3%',fontSize:20}}>+94 2204445</Text>
+                        <Text style={{ marginLeft:'3%',fontSize:17, color:'blue', textDecorationLine: 'underline'}}>+94 2204445</Text>
                     </View>
                 </View>
                 <View style={{marginLeft:'25%', marginTop:'2%'}}>
@@ -67,7 +67,7 @@ const ContactUs = ({navigation}) => {
                         <View style={{ marginLeft:'10%', marginTop:'2%'}}>
                             <SimpleLineIcons name="call-out" size={15} color="#ff0055" />
                         </View>
-                        <Text style={{ marginLeft:'3%',fontSize:20}}>+94 2204446</Text>
+                        <Text style={{ marginLeft:'3%',fontSize:17, color:'blue', textDecorationLine: 'underline'}}>+94 2204446</Text>
                     </View>
                 </View>
             </View>
@@ -84,7 +84,7 @@ const ContactUs = ({navigation}) => {
                     <Text style={{fontSize: 13,marginLeft:'35%'}}>Sri Lanka</Text>
                 </View>
             </View>
-            <View style={{flex: 1, flexDirection: 'column', justifyContent:'flex-end', marginTop:'6%', marginLeft:'87%'}}>
+            <View style={{flex: 1, flexDirection: 'column', justifyContent:'flex-end', marginTop:'6%', marginLeft:'85%'}}>
                 <TouchableOpacity onPress={() =>Linking.openURL("https://twitter.com/ebankofceylon?lang=en")}>
                 <View style={{width:50, height:50, borderWidth:2,borderRadius: 30}}>
                         <Image style={{width:47, height:47, borderWidth:3,borderRadius: 30}} source={require('../assets/twitter-logo.jpg')}/>
@@ -107,7 +107,7 @@ const ContactUs = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        height:'35%',
+        height:'25%',
         width: '100%',
         backgroundColor: '#faee52',
         borderBottomEndRadius:40,

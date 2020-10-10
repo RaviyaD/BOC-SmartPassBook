@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
     },
     accName: {
-        fontSize: 25,
+        fontSize: 20,
         marginTop: '5%',
         marginLeft:'10%',
         marginBottom:'2%',
@@ -132,24 +132,23 @@ const styles = StyleSheet.create({
         marginLeft:'5%'
     },
     accNum: {
-        fontSize: 20,
+        fontSize: 16,
     },
     accDetails: {
         marginLeft: '10%',
-        marginTop: '4%',
+        marginTop: '2%',
     },
     accBalance: {
-        fontSize: 40,
+        fontSize: 30,
         fontWeight: 'bold',
     },
     accType: {
         fontSize: 15,
-        marginBottom: '3%'
+        marginBottom: '1%'
     },
     editButton: {
         alignItems: 'center',
-        padding: 5,
-        marginLeft: '20%',
+        marginLeft: '22%',
     },
     otherAccrates: {
         marginTop: '5%',
