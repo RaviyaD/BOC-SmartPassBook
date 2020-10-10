@@ -51,7 +51,7 @@ const ChangePassword = ({navigation}) => {
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <Text style={{color:'white', fontSize:35, marginTop:'10%'}}>Change Password</Text>
+                <Text style={{color:'white', fontSize:35, marginTop:'25%'}}>Change Password</Text>
             </View>
 
             <View style={{ justifyContent: 'center',
@@ -106,6 +106,8 @@ const styles = StyleSheet.create({
         height:'25%',
         width: '100%',
         backgroundColor: '#faee52',
+        borderBottomEndRadius:40,
+        borderBottomStartRadius:40,
         justifyContent: 'center',
         alignItems: 'center'
     },

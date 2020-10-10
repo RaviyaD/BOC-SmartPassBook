@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, SafeAreaView, ScrollView, Modal, Alert, DrawerLayoutAndroid,Image, BackHandler} from "react-native";
+import {StyleSheet, View, Text, SafeAreaView, ScrollView, Modal, Alert, DrawerLayoutAndroid,Image} from "react-native";
 import {Card, CardItem, Button, Body, Container, Content} from "native-base";
 import Dialog, {
     DialogContent,
@@ -34,8 +34,7 @@ class TransactionHistory extends Component {
             visible: false,
             drawerPosition: 'left',
             setDrawerPosition: 'left',
-            spinner: true,
-            array :[]
+            spinner: true
         }
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
 
@@ -117,9 +116,10 @@ class TransactionHistory extends Component {
 
                         />
                         <Row style={{marginTop: 5, top: 0}}>
-                            <Col style={{backgroundColor: '#e5e50d', height: 120}}>
+                            <Col style={{backgroundColor: '#faee52', height: 120}}>
+                                <View style={{marginLeft: '5%'}}>
                                 <Button light bordered style={{
-                                    left: 10,
+                                    left: 0,
                                     width: 150,
                                     color: 'white',
                                     top: 10,
@@ -132,23 +132,20 @@ class TransactionHistory extends Component {
                                     <Text style={{left: 10, fontSize: 16, fontWeight: 'bold'}}>Account Details</Text>
 
                                 </Button>
-                                <Text style={{marginTop: 15, fontSize: 15, fontStyle: 'italic',left:10}}>Last Update On</Text>
+                                <Text style={{marginTop: 10, fontSize: 15, fontStyle: 'italic'}}>Last Update On</Text>
 
                                 <Text style={{margin: 8, fontSize: 20}}>
                                     <Text> Today </Text>
                                     04.00PM</Text>
+                                </View>
                             </Col>
-                            <Col style={{backgroundColor: '#e5e50d', height: 120, alignItems: 'center', top: 0}}>
-                                <Text style={{marginTop: 10, fontSize: 20,fontFamily: 'tahoma',
-                                    fontStyle: 'italic'}}>Available Balance</Text>
+                            <Col style={{backgroundColor: '#faee52', height: 120, alignItems: 'center', top: 0}}>
+                                <Text style={{margin: 10, fontSize: 20}}>Available Balance</Text>
 
                                 <Text style={{margin: 8, fontSize: 20}}>
-                                    <Text style={{fontFamily: 'tahoma',
-                                        fontStyle: 'italic'}}>LKR </Text>
-                                    <Text style={{margin: 8, fontSize: 40, fontWeight: 'bold',fontFamily: 'tahoma',
-                                        fontStyle: 'italic'}}>{this.props.navigation.state.params.balance}</Text>
-                                    <Text style={{fontFamily: 'tahoma',
-                                        fontStyle: 'italic'}}>.00</Text> </Text>
+                                    <Text>LKR </Text>
+                                    <Text style={{margin: 8, fontSize: 35, fontWeight: 'bold'}}>{this.props.navigation.state.params.balance}</Text>
+                                    <Text>.00</Text> </Text>
                             </Col>
                         </Row>
 
@@ -206,7 +203,7 @@ class TransactionHistory extends Component {
                                 <Body style={{alignItems: 'center'}}>
 
                                     <Text style={{fontSize: 18}}>
-                                        {this.props.navigation.state.params.at}  - {this.props.navigation.state.params.id}
+                                        Saving Account - XXXXXXXX0987
                                     </Text>
                                 </Body>
                             </CardItem>

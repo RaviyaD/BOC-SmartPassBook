@@ -108,10 +108,36 @@ class AccountList extends Component {
                             <Text style={styles.accType}>{this.state.list2.Type}</Text>
                         </View>
                     </TouchableOpacity>
+                    <View style={{margin:10, backgroundColor:'white', shadowColor:'black', shadowRadius:2}}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
+                                <View style={styles.accDetails}>
+                                    <Text style={styles.accNum}>{this.state.list2.ID}</Text>
+                                    <View style={{flexDirection: 'row'}}>
+                                        <Text style={styles.accBalance}>LKR {this.state.list2.Balance}</Text>
+                                        <TouchableOpacity onPress={() => this.props.navigation.navigate('AccountSettings', {
+                                            AccountNo: this.state.list2.ID,
+                                            navigation: this.props.navigation
+                                        })}>
+                                            <View onPress={() =>
+                                                this.props.navigation.navigate('AccountSettings', {
+                                                    AccountNo: this.state.list2.ID,
+                                                    navigation: this.props.navigation
+                                                })}
+
+                                                  style={this.state.isTrue? styles.isfalsebutton: styles.istruebutton}>
+                                                <Icon name="circle-edit-outline" size={40} color="#828264" />
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <Text style={styles.accType}>{this.state.list2.Type}</Text>
+                                </View>
+                            </TouchableOpacity>
+                    </View>
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
 
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation,type:'Account1',balance:this.state.list1.Balance,id:this.state.list1.ID,at:this.state.list1.Type})}>
+                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
                         <View style={styles.accDetails}>
                             <Text style={styles.accNum}>{this.state.list1.ID}</Text>
                             <View style={{flexDirection: 'row'}}>

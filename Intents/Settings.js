@@ -49,59 +49,105 @@ const Settings = ({navigation}) => {
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <Text style={{color:'white', fontSize:35, marginTop:'10%'}}>Settings</Text>
+                <Text style={{color:'white', fontSize:35, marginTop:'25%'}}>Settings</Text>
             </View>
 
+            <View style={{flexDirection:'row', marginTop:'25%',marginLeft:'10%', height:'70%'}}>
+                <View style={{height:'30%', width:'40%', borderWidth:7, borderColor: '#faee52', borderBottomStartRadius:30, padding: 2, borderTopEndRadius: 40}}>
                     <View style={{
                         justifyContent: 'center',
-                        alignItems: 'center',
-
+                        alignItems: 'center'
                     }}>
-                        <Button info large style={styles.passwordButton}
+                        <View style={{
+                            width: '70%', justifyContent: 'center',
+                            alignItems: 'center', marginTop: 20,left:'5%'
+                        }}
                                 onPress={() => {
                                     navigation.navigate('ChangePassword');
                                 }}
                         >
                             <Text style={{
                                 textAlign: 'center',
-                                left: 8,
                                 fontSize: 18,
                                 fontWeight: 'bold',
                                 fontStyle: 'italic'
                             }}> Change Password </Text>
-                        </Button>
-                        <Text style={{
-                            textAlign: 'center', width: '40%',
-                            paddingTop: 0,
-                            fontSize: 15, color: '#706d04', fontStyle: 'italic'
-                        }}>You can change your pin and make your account more secure </Text>
+                        </View>
 
                     </View>
-
+                </View>
+                <View style={{marginLeft:'3%',height:'30%', width:'40%', borderWidth:7, borderColor: '#faee52', borderBottomEndRadius:40, borderTopStartRadius:40, padding: 2}}>
                     <View style={{
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Button info large style={{
-                            width: '70%', textAlign: 'center', justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40,left:'40%', backgroundColor: '#f5e1a6',
+                        <View style={{
+                            width: '70%', justifyContent: 'center',
+                            alignItems: 'center', marginTop: 20,left:'1%'
                         }}>
                             <Text style={{
-                                justifyContent: 'center',
-                                alignItems: 'center',
                                 textAlign: 'center',
-                                left: 8,
                                 fontSize: 18,
                                 fontWeight: 'bold',
                                 fontStyle: 'italic'
-                            }}> Deactivate Device </Text>
-                        </Button>
-                        <Text style={{
-                            textAlign: 'center', width: 250,
-                            paddingTop: 0,
-                            fontSize: 15, color: '#706d04', fontStyle: 'italic'
-                        }}>You can delete your account from your device </Text>
+                            }}> Deactivate Account  </Text>
+                        </View>
+
                     </View>
+                </View>
+            </View>
+                    {/*<View style={{*/}
+                    {/*    justifyContent: 'center',*/}
+                    {/*    alignItems: 'center'*/}
+                    {/*}}>*/}
+                    {/*    <Button info large style={{*/}
+                    {/*        width: '70%', justifyContent: 'center',*/}
+                    {/*        alignItems: 'center', marginTop: 40,left:'40%'*/}
+                    {/*    }}*/}
+                    {/*            onPress={() => {*/}
+                    {/*                navigation.navigate('ChangePassword');*/}
+                    {/*            }}*/}
+                    {/*    >*/}
+                    {/*        <Text style={{*/}
+                    {/*            textAlign: 'center',*/}
+                    {/*            left: 8,*/}
+                    {/*            fontSize: 18,*/}
+                    {/*            fontWeight: 'bold',*/}
+                    {/*            fontStyle: 'italic'*/}
+                    {/*        }}> Change Password </Text>*/}
+                    {/*    </Button>*/}
+                    {/*    <Text style={{*/}
+                    {/*        textAlign: 'center', width: 250,*/}
+                    {/*        paddingTop: 0,*/}
+                    {/*        fontSize: 15, color: '#d26969', fontStyle: 'italic'*/}
+                    {/*    }}>You can change your pin and make your account more secure </Text>*/}
+
+                    {/*</View>*/}
+
+                    {/*<View style={{*/}
+                    {/*    justifyContent: 'center',*/}
+                    {/*    alignItems: 'center'*/}
+                    {/*}}>*/}
+                    {/*    <Button info large style={{*/}
+                    {/*        width: '70%', textAlign: 'center', justifyContent: 'center',*/}
+                    {/*        alignItems: 'center', marginTop: 40,left:'40%'*/}
+                    {/*    }}>*/}
+                    {/*        <Text style={{*/}
+                    {/*            justifyContent: 'center',*/}
+                    {/*            alignItems: 'center',*/}
+                    {/*            textAlign: 'center',*/}
+                    {/*            left: 8,*/}
+                    {/*            fontSize: 18,*/}
+                    {/*            fontWeight: 'bold',*/}
+                    {/*            fontStyle: 'italic'*/}
+                    {/*        }}> Deactivate Device </Text>*/}
+                    {/*    </Button>*/}
+                    {/*    <Text style={{*/}
+                    {/*        textAlign: 'center', width: 250,*/}
+                    {/*        paddingTop: 0,*/}
+                    {/*        fontSize: 15, color: '#d26969', fontStyle: 'italic'*/}
+                    {/*    }}>You can delete your account from your device </Text>*/}
+                    {/*</View>*/}
 
         </DrawerLayoutAndroid>
     );
@@ -109,9 +155,11 @@ const Settings = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        height:'35%',
+        height:'25%',
         width: '100%',
         backgroundColor: '#faee52',
+        borderBottomEndRadius:40,
+        borderBottomStartRadius:40,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -140,14 +188,7 @@ const styles = StyleSheet.create({
         top: 0,
         fontSize: 20,
         fontWeight: 'bold'
-    }, passwordButton: {
-        width: '70%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 40,
-        left: '40%',
-        backgroundColor: '#f5e1a6',
-    }
+    },
 })
 
 export default Settings;
