@@ -1,5 +1,17 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, SafeAreaView, ScrollView, Modal, Alert, DrawerLayoutAndroid,Image,BackHandler} from "react-native";
+import {
+    StyleSheet,
+    View,
+    Text,
+    SafeAreaView,
+    ScrollView,
+    Modal,
+    Alert,
+    DrawerLayoutAndroid,
+    Image,
+    BackHandler,
+    Picker
+} from "react-native";
 import {Card, CardItem, Button, Body, Container, Content} from "native-base";
 import Dialog, {
     DialogContent,
@@ -46,7 +58,8 @@ class TransactionHistory extends Component {
             drawerPosition: 'left',
             setDrawerPosition: 'left',
             spinner: true,
-            array:[]
+            array:[],
+            selectedValue:''
         }
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
 
@@ -132,7 +145,7 @@ class TransactionHistory extends Component {
                                 <View style={{marginLeft: '5%'}}>
                                 <Button light bordered style={{
                                     left: 0,
-                                    width: 150,
+                                    width: 130,
                                     color: 'white',
                                     top: 10,
                                     borderColor: '#111111',
@@ -141,9 +154,22 @@ class TransactionHistory extends Component {
                                         onPress={() => {
                                             this.setState({visible: true});
                                         }}>
+
+
+
                                     <Text style={{left: 10, fontSize: 16, fontWeight: 'bold'}}>Account Details</Text>
 
                                 </Button>
+
+                                    <Picker
+                                        selectedValue={this.state.selectedValue}
+                                        style={{ height: 50, width: 150, position: 'absolute',left:130, borderColor:'#111111',top:10,borderRadius: 15,fontWeight: 'bold' }}
+                                        onValueChange={(itemValue, itemIndex) => this.setState({selectedValue:itemValue})}
+                                    >
+                                        <Picker.Item label="15 TRX" value="java" />
+                                        <Picker.Item label="30 TRX" value="js" />
+                                    </Picker>
+
                                 <Text style={{marginTop: 13, fontSize: 15, fontStyle: 'italic'}}>Last Update On</Text>
 
                                 <Text style={{margin: 8, fontSize: 20}}>
@@ -206,7 +232,7 @@ class TransactionHistory extends Component {
                                     <Text style={{fontSize: 25, fontWeight: 'bold'}}>Kalawana</Text></Text>
                                 <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account Type :
-                                    <Text style={{fontSize: 25, fontWeight: 'bold'}}>{this.props.navigation.state.params.at}</Text></Text>
+                                    <Text style={{fontSize: 15, fontWeight: 'bold'}}>{this.props.navigation.state.params.at}</Text></Text>
                                 <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
                             </DialogContent>
                         </Dialog>
@@ -295,6 +321,32 @@ const styles = StyleSheet.create({
         height: 20
     },spinnerTextStyle: {
         color: '#FFF'
-    }
+    },input: {
+
+        height: 50,
+        width:'90%',
+        paddingLeft: 15,
+        borderRadius: 5,
+        borderColor: "#faee52",
+        borderWidth: 2,
+        fontSize: 18.5,
+        fontFamily: 'sans-serif-condensed',
+        marginBottom:15,
+        marginLeft:25,
+        marginRight:25,
+        marginTop:20,
+        backgroundColor:"white"
+
+
+    },greyText: {
+        textAlign: 'left',
+        paddingTop: 20,
+        fontSize: 18,
+        color: '#363636',
+        width:'80%',
+        paddingLeft: 15,
+        marginLeft:15
+
+    },
 })
 
