@@ -76,7 +76,7 @@ class TermsConditions extends Component {
                 drawerPosition={this.state.drawerPosition}
                 renderNavigationView={() => this.navigationView()}>
                 <View style={styles.container}>
-                    <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
+                    <ImageBackground style={styles.backgroundImage} source={require('../assets/main.jpg')}>
                         <Text style={styles.topic}> Terms & conditions </Text>
                         <TextInput style={styles.input}
                                    underlineColorAndroid="transparent"
@@ -84,7 +84,10 @@ class TermsConditions extends Component {
                                    onChangeText={this.handleSearch}
                         />
                         <ScrollView style={styles.scrollView}>
-                            <Text>{this.state.text}<Text style={styles.bold}>{this.state.text1}</Text>{this.state.text2}</Text>
+                            <View style={styles.body}>
+                                <Text>{this.state.text}<Text style={styles.bold}>{this.state.text1}</Text>{this.state.text2}</Text>
+                            </View>
+
                         </ScrollView>
                     </ImageBackground>
                 </View>
@@ -119,15 +122,20 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         textAlign: 'center',
         borderWidth: 1,
+        backgroundColor:'white'
     },
     scrollView: {
         height: 100,
-        width: 300,
+        width: 370,
         fontWeight: 'bold',
     },
     bold: {
         fontWeight: 'bold',
         backgroundColor:'yellow'
+    },
+    body: {
+        backgroundColor: 'white',
+        padding:5
     }
 });
 

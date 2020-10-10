@@ -111,17 +111,19 @@ class Registration extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground style={styles.backgroundImage} source={require('../assets/common.jpg')}>
-                    <Spinner
-                        visible={this.state.spinner}
-                        textContent={'Loading...'}
-                        textStyle={styles.spinnerTextStyle}
-                        color="yellow"
-                        animation='fade'
+                <Spinner
+                    visible={this.state.spinner}
+                    textContent={'Loading...'}
+                    textStyle={styles.spinnerTextStyle}
+                    color="yellow"
+                    animation='fade'
 
-                    />
+                />
+                <View style={styles.topicBackground}>
+
                     <Text style={styles.topic}>Sign Up</Text>
-
+                </View>
+                <ImageBackground source={require('../assets/main2.jpg')} style={styles.body}>
                     <Text style={styles.inputUn}>Username</Text>
                     <Text>Enter given username by Bank</Text>
                     <TextInput style={styles.input}
@@ -166,6 +168,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 40,
         textAlign: 'center',
+        margin:20
     },
     loginText: {
         fontWeight: 'bold',
@@ -177,31 +180,33 @@ const styles = StyleSheet.create({
     inputUn: {
         textAlign: 'center',
         paddingTop: 20,
-        fontSize: 15,
+        fontSize: 18,
     },
     inputPw: {
         textAlign: 'center',
         paddingTop: 35,
-        fontSize: 15,
+        fontSize: 18,
     },
     inputPwConfirm: {
         textAlign: 'center',
-        fontSize: 15,
+        fontSize: 18,
     },
     errorMsg: {
         color: '#800000',
     },
     input: {
         margin: 15,
-        width: 200,
+        width: 230,
         height: 40,
         borderColor: '#000000',
         borderRadius: 10,
         textAlign: 'center',
         borderWidth: 1,
+        backgroundColor: 'white'
+
     },
     submitButton: {
-        backgroundColor: '#000000',
+        backgroundColor: '#FDC722',
         padding: 10,
         margin: 15,
         width: 150,
@@ -210,7 +215,9 @@ const styles = StyleSheet.create({
     },
     submitButtonText: {
         textAlign: 'center',
-        color: 'white',
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize:15
     },
     registerLink: {
         textAlign: 'center',
@@ -227,8 +234,26 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
         alignItems: 'center',
         justifyContent: 'center',
-    }, spinnerTextStyle: {
+    },
+    spinnerTextStyle: {
         color: '#FFF'
-    }
+    },
+    topicBackground: {
+        textAlign: 'center',
+        alignItems: 'center',
+        width: '100%',
+        // resizeMode: 'center',
+
+        shadowOffset: {width: 10, height: 10},
+        shadowColor: '#000',
+        shadowOpacity: 1,
+        elevation: 10,
+        backgroundColor: "#FDC723"
+    },
+    body: {
+        alignItems: 'center',
+        height: '100%',
+
+    },
 });
 export default Registration;
