@@ -43,6 +43,7 @@ export default class MostViews extends Component {
     }
     render() {
         return (
+
             <View style={styles.Panel_Holder}>
                 <TouchableOpacity
                     activeOpacity={0.7}

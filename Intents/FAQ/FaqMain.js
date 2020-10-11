@@ -151,7 +151,11 @@ export default class FaqMain extends Component {
                 />
                 {this.state.Ldata.map((item, index) => {
 
-                    return <Text style={styles.greyText}>{item.title}</Text>
+                    return <View>
+                        <Text style={styles.greyText}>{item.title}</Text>
+                    <Text style={styles.greyBody}>{item.body}</Text>
+
+                    </View>
                 })}
                 <View style={styles.subContainer}>
                     <ScrollView
@@ -199,6 +203,15 @@ const styles = StyleSheet.create({
     greyText: {
         textAlign: 'left',
         paddingTop: 20,
+        fontSize: 18,
+        color: '#363636',
+        width:'80%',
+        paddingLeft: 15,
+        marginLeft:15
+
+    },
+    greyBody: {
+        textAlign: 'left',
         fontSize: 18,
         color: '#363636',
         width:'80%',

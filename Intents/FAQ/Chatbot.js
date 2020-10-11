@@ -112,7 +112,7 @@ export default class Chatbot extends Component {
                 renderNavigationView={() => this.navigationView()}>
                 <View style={styles.container}>
 
-                    <Text style={{color:'white', fontSize:30, marginTop:'25%', marginLeft:'5%',fontWeight: 'bold'}}>We'll Text You...</Text>
+                    <Text style={{color:'white', fontSize:30, marginTop:'5%', marginLeft:'5%',fontWeight: 'bold'}}>We'll Text You...</Text>
                 </View>
 
 

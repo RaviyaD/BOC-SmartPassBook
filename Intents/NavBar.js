@@ -9,7 +9,7 @@ export default class NavBar extends Component{
         const navigation = this.props.navigation;
         return (
             <View>
-                <View style={{height: '65%', width: '100%', backgroundColor: '#FDC723', shadowOffset: {width: 10, height: 10},
+                <View style={{height: '63.5%', width: '100%', backgroundColor: '#FDC723', shadowOffset: {width: 10, height: 10},
                     shadowColor: '#000',
                     shadowOpacity: 1,
                     elevation: 10,}}>
