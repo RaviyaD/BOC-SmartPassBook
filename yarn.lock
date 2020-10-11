@@ -6662,6 +6662,13 @@ react-native-parsed-text@0.0.22:
   dependencies:
     prop-types "^15.7.x"
 
+react-native-password-eye@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-password-eye/-/react-native-password-eye-1.0.2.tgz#45c89f7f799e1a7349a5eb53bbca67b5d909b258"
+  integrity sha512-AeW2qoko6LmkvqGC2EhsQgzhryPEUuLlwH4g4TiaJC6a44Eo9EoL/muaJBfWBIde6A9TRJd149u3+9YcEjgL0w==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-popup-dialog@^0.18.3:
   version "0.18.3"
   resolved "https://registry.yarnpkg.com/react-native-popup-dialog/-/react-native-popup-dialog-0.18.3.tgz#5d7a13fd7d9f817cf2121965a3b100a257201b67"
