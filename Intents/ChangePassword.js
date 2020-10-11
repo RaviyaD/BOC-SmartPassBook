@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'
 import AwesomeAlert from 'react-native-awesome-alerts';
 import NavBar from "./NavBar";
 
@@ -19,7 +20,9 @@ const ChangePassword = ({navigation}) => {
     const [value2, onChangeText2] = React.useState('');
     const [error, onChangeError] = React.useState('');
     const [showAlert,onChangeAlert] = React.useState(false);
-
+    const [eye1,onEye1] = React.useState(true)
+    const [eye2,onEye2] = React.useState(true)
+    const [eye3,onEye3] = React.useState(true)
     const [drawerPosition, setDrawerPosition] = React.useState('left');
     const changeDrawerPosition = () => {
         if (drawerPosition === 'left') {
@@ -72,31 +75,39 @@ const ChangePassword = ({navigation}) => {
                         visible-password={true}
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
-                        secureTextEntry={true}
+                        secureTextEntry={eye1}
                         onChangeText={text => onChangeText(text)}
                         value={value}
                     />
+                    <Icon name={eye1 ? 'eye' : 'eye-off'}  color="black" size={20} style={{position:'absolute',top:'20%',left:'65%'}} onPress={()=> {
+                        onEye1(!eye1)
+                    }} />
                     <Text style={styles.inputPw}>New Password</Text>
                     <TextInput
                         style={styles.input}
                         visible-password={true}
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
-                        secureTextEntry={true}
+                        secureTextEntry={eye2}
                         onChangeText={text => onChangeText1(text)}
                         value={value1}
                     />
+                <Icon name={eye2 ? 'eye' : 'eye-off'}  color="black" size={20} style={{position:'absolute',top:'42%',left:'65%'}} onPress={()=> {
+                    onEye2(!eye2)
+                }}/>
                     <Text style={styles.inputPw}>Confirm Password</Text>
                     <TextInput
                         style={styles.input}
                         visible-password={true}
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
-                        secureTextEntry={true}
+                        secureTextEntry={eye3}
                         onChangeText={text => onChangeText2(text)}
                         value={value2}
                     />
-
+                <Icon name={eye3 ? 'eye' : 'eye-off'}  color="black" size={20} style={{position:'absolute',top:'65%',left:'65%'}} onPress={()=> {
+                    onEye3(!eye3)
+                }}/>
 
                 <AwesomeAlert
                     show={showAlert}
@@ -131,6 +142,7 @@ const ChangePassword = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
+        flex:1,
         height:'25%',
         width: '100%',
         backgroundColor: '#faee52',
