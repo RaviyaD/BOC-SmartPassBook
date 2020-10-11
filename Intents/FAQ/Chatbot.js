@@ -121,7 +121,7 @@ export default class Chatbot extends Component {
                     <GiftedChat
                         messages={this.state.messages}
                         onSend={(messages) => this.onSend(messages)}
-                        style={{Color: '#faee52'}}
+                        style={{Color: '#FDC723'}}
                         user={{
                             _id: 1,
                         }}
@@ -135,9 +135,9 @@ export default class Chatbot extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height:'25%',
+        height:'15%',
         width: '100%',
-        backgroundColor: '#faee52',
+        backgroundColor: '#FDC723',
     },
 
     topic: {

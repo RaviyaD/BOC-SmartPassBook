@@ -135,8 +135,7 @@ export default class FaqMain extends Component {
                 drawerPosition={this.state.drawerPosition}
                 renderNavigationView={() => this.navigationView()}>
                 <View style={styles.container}>
-                    <Text style={{color:'white', fontSize:35, marginTop:'10%', marginLeft:'10%',fontWeight: 'bold'}}>FAQs</Text>
-
+                    <Text style={{color:'black', fontSize:35, marginTop:'8%', marginLeft:'10%',fontWeight: 'bold'}}>FAQs</Text>
                 </View>
 
 
@@ -187,9 +186,9 @@ export default class FaqMain extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height:'25%',
+        height:'15%',
         width: '100%',
-        backgroundColor: '#faee52',
+        backgroundColor: '#FDC723',
     },
     subContainer: {
         flex: 1,
@@ -214,7 +213,7 @@ const styles = StyleSheet.create({
         width:'90%',
         paddingLeft: 15,
         borderRadius: 5,
-        borderColor: "#faee52",
+        borderColor: "#FDC723",
         borderWidth: 2,
         fontSize: 18.5,
         fontFamily: 'sans-serif-condensed',
