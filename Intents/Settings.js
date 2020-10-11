@@ -104,7 +104,7 @@ const Settings = ({navigation}) => {
                     }}>
                         <Button info large style={{
                             width: '70%', justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40,left:'40%',backgroundColor:'#faee52'
+                            alignItems: 'center', marginTop: 40,left:'40%',backgroundColor:'#FDC723'
                         }}
                                 onPress={() => {
                                     navigation.navigate('ChangePassword');
@@ -156,7 +156,7 @@ const Settings = ({navigation}) => {
                     }}>
                         <Button info large style={{
                             width: '70%', textAlign: 'center', justifyContent: 'center',
-                            alignItems: 'center', marginTop: 40,left:'40%',backgroundColor:'#faee52'
+                            alignItems: 'center', marginTop: 40,left:'40%',backgroundColor:'#FDC723'
                         }}
                         onPress={() => onChangeAlert(true)}>
                             <Text style={{
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     container: {
         height:'25%',
         width: '100%',
-        backgroundColor: '#faee52',
+        backgroundColor: '#FDC723',
         borderBottomEndRadius:40,
         borderBottomStartRadius:40,
         justifyContent: 'center',

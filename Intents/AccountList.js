@@ -6,7 +6,8 @@ import {
     View,
     Text,
     TouchableOpacity,
-    DrawerLayoutAndroid
+    DrawerLayoutAndroid,
+    ImageBackground
 } from 'react-native';
 import NavBar from "./NavBar";
 import Spinner from "react-native-loading-spinner-overlay";
@@ -80,10 +81,10 @@ class AccountList extends Component {
                 />
                 <View style={styles.container}>
                     <Text
-                        style={{color: 'white', fontSize: 35, marginTop: '17%', marginLeft: '16%', fontWeight: 'bold'}}>ACCOUNT LIST</Text>
+                        style={{color: 'white', fontSize: 35, marginTop: '10%', marginLeft: '16%', fontWeight: 'bold'}}>ACCOUNT LIST</Text>
                 </View>
                 <View>
-                    <Text style={styles.accName}>Ms. Dulmini</Text>
+                    <Text style={styles.accNameM}><Text style={styles.accName}>Ms. Dulmini</Text>   Dissanayaka</Text>
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
                             <TouchableOpacity
                                 onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation,type:'Account',balance:this.state.list2.Balance,id:this.state.list2.ID,at:this.state.list2.Type})}>
@@ -144,9 +145,19 @@ const styles = StyleSheet.create({
     container: {
         height:'20%',
         width: '100%',
-        backgroundColor: '#faee52',
+        backgroundColor: '#FDC723',
         borderBottomEndRadius:40,
-        borderBottomStartRadius:40
+        borderBottomStartRadius:40,
+
+        shadowOffset: {width: 10, height: 10},
+        shadowColor: '#000',
+        shadowOpacity: 1,
+        elevation: 10,
+    },
+    body: {
+        alignItems: 'center',
+        height: '100%',
+
     },
     istruebutton: {
         fontSize: 20,
@@ -156,7 +167,7 @@ const styles = StyleSheet.create({
         width:45,
         height:45,
         padding:4,
-        backgroundColor:'#faee52'
+        backgroundColor:'#FDC723'
     },
     isfalsebutton :{
         fontSize: 20,
@@ -166,7 +177,7 @@ const styles = StyleSheet.create({
         width:80,
         height:50,
         padding:4,
-        backgroundColor:'#faee52'
+        backgroundColor:'#FDC723'
     },
     innerContainer:{
         height:'80%',
@@ -209,14 +220,18 @@ const styles = StyleSheet.create({
     accName: {
         fontSize: 25,
         margin: '5%',
-        fontWeight: 'bold',
-        color: '#ff9933',
+        color: 'black',
+    },
+    accNameM: {
+        fontSize: 15,
+        margin: '5%',
+        color: 'black',
     },
     divider: {
         borderWidth: 3,
         width: '90%',
         marginLeft: '5%',
-        borderColor: '#ff9933',
+        borderColor: '#FDC723',
     },
     accNum: {
         fontSize: 20,

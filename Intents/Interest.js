@@ -28,7 +28,7 @@ const Interest = ({navigation}) => {
             drawerPosition={drawerPosition}
             renderNavigationView={() => navigationView}>
             <View style={styles.container}>
-                <Text style={{color:'white', fontSize:35, marginTop:'10%', marginLeft:'22%'}}>Interest Rates</Text>
+                <Text style={{color:'white', fontSize:35, marginTop:'10%', marginLeft:'22%',fontWeight:'bold'}}>Interest Rates</Text>
             </View>
 
                 <TabViewExample/>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     container: {
         height:'15%',
         width: '100%',
-        backgroundColor: '#faee52',
+        backgroundColor: '#FDC723',
     },
 });
 

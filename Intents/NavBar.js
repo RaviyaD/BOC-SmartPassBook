@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text,ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Component} from 'react';
 import Dash from 'react-native-dash';
@@ -9,7 +9,10 @@ export default class NavBar extends Component{
         const navigation = this.props.navigation;
         return (
             <View>
-                <View style={{height: '65%', width: '100%', backgroundColor: '#faee52'}}>
+                <View style={{height: '65%', width: '100%', backgroundColor: '#FDC723', shadowOffset: {width: 10, height: 10},
+                    shadowColor: '#000',
+                    shadowOpacity: 1,
+                    elevation: 10,}}>
                     <Text style={styles.title}>SMART</Text>
                     <Text style={styles.passbook}>PASSBOOK</Text>
                     <View style={{marginLeft:'3%', marginTop: '11%', flexDirection: 'row'}}>
@@ -17,12 +20,15 @@ export default class NavBar extends Component{
                         <Text style={{fontSize:15, marginLeft:'3%', marginTop: '1%', color:'#828264'}}>Duldissanayake@gmail.com</Text>
                     </View>
                 </View>
-                <View
+                <ImageBackground
+                    source={require('../assets/main3.jpg')}
                     style={{
                         flexDirection: 'column',
                         position: 'absolute',
                         marginTop: '60%',
                         marginLeft: '2%',
+                        width:'100%',
+
                     }}>
                     <View style={{flex: 1, flexDirection: 'row'}}>
                         <View style={{marginTop: '7%', marginLeft:'7%', marginRight:'7%'}}>
@@ -81,7 +87,7 @@ export default class NavBar extends Component{
                     </View>
 
                     <Dash dashGap={3} dashColor="#deded4" style={{ width:'94%', height:1, flexDirection:'row', marginLeft:'5%', marginTop: '10%'}}/>
-                </View>
+                </ImageBackground>
             </View>
         );
     }
@@ -89,15 +95,17 @@ export default class NavBar extends Component{
 const styles = StyleSheet.create({
     title: {
         color: 'white',
-        fontSize: 44,
+        fontSize: 45,
         top: 5,
         marginLeft: '7%',
         marginTop: '5%',
+        fontWeight: 'bold'
     },
     passbook: {
         color: '#000000',
-        fontSize: 30,
+        fontSize: 33,
         marginLeft: '7%',
+        fontWeight: 'bold'
     },
     imageView: {
         width: '15%',

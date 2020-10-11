@@ -55,7 +55,7 @@ export default function TabViewExample() {
     const renderTabBar = props => (
         <TabBar
             {...props}
-            indicatorStyle={{ backgroundColor: '#ffcc00' }}
+            indicatorStyle={{ backgroundColor: '#FDC723' }}
             style={{ backgroundColor: '#f3f3f2' }}
             labelStyle={{ color: '#828264', fontWeight: 'bold'}}
         />
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     divider: {
         borderWidth: 3,
         width: '90%',
-        borderColor: '#ffcc00',
+        borderColor: '#FDC723',
         marginLeft:'5%'
     },
     accNum: {

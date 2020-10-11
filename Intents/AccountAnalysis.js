@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
 
         height:'20%',
         width: '100%',
-        backgroundColor: '#faee52',
+        backgroundColor: '#FDC723',
     },
 
     subtopic: {
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
         width:'72%',
         paddingLeft: 15,
         borderRadius: 5,
-        borderColor: "#faee52",
+        borderColor: "#FDC723",
         borderWidth: 2,
         fontSize: 18.5,
         fontFamily: 'sans-serif-condensed',

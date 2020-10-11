@@ -170,7 +170,7 @@ class TransactionHistory extends Component {
                                     04.00PM</Text>
                                 </View>
                             </Col>
-                            <Col style={{backgroundColor: '#faee52', height: 120, alignItems: 'center', top: 0}}>
+                            <Col style={{backgroundColor: '#FDC723', height: 120, alignItems: 'center', top: 0}}>
                                 <Picker
                                     selectedValue={this.state.selectedValue}
                                     style={{ height: 20, width: 160,left:5, borderColor:'#111111',top:10,borderRadius: 15,fontWeight: 'bold' }}
@@ -226,19 +226,19 @@ class TransactionHistory extends Component {
                             <DialogContent style={{width: 350, height: 250, alignItems: 'center', margin: 10}}>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account No :
                                     <Text style={{fontSize: 25, fontWeight: 'bold'}}>{this.props.navigation.state.params.id}</Text></Text>
-<View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
+<View style={{width:'90%',height:5,backgroundColor:'#FDC723'}} ></View>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account Name :
                                     <Text style={{fontSize: 25, fontWeight: 'bold'}}>H.D.L Lakshan</Text></Text>
-                                <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
+                                <View style={{width:'90%',height:5,backgroundColor:'#FDC723'}} ></View>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account Branch :
                                     <Text style={{fontSize: 25, fontWeight: 'bold'}}>Kalawana</Text></Text>
-                                <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
+                                <View style={{width:'90%',height:5,backgroundColor:'#FDC723'}} ></View>
                                 <Text style={{top: 10, fontSize: 18, left: 10, margin: 10}}>Account Type :
                                     <Text style={{fontSize: 15, fontWeight: 'bold'}}>{this.props.navigation.state.params.at}</Text></Text>
-                                <View style={{width:'90%',height:5,backgroundColor:'#d4cf60'}} ></View>
+                                <View style={{width:'90%',height:5,backgroundColor:'#FDC723'}} ></View>
                             </DialogContent>
                         </Dialog>
-<View style={{backgroundColor:'#faee52'}}>
+<View style={{backgroundColor:'#FDC723'}}>
                         <Card style={{top: 0}}>
                             <CardItem>
                                 <Body style={{alignItems: 'center'}}>
@@ -329,7 +329,7 @@ const styles = StyleSheet.create({
         width:'90%',
         paddingLeft: 15,
         borderRadius: 5,
-        borderColor: "#faee52",
+        borderColor: "#FDC723",
         borderWidth: 2,
         fontSize: 18.5,
         fontFamily: 'sans-serif-condensed',
@@ -351,4 +351,3 @@ const styles = StyleSheet.create({
 
     },
 })
-
