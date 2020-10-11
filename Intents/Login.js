@@ -20,7 +20,7 @@ class Login extends Component {
         usernameError: '',
         isVisible: true,
         loginList: [],
-        isConnected: false
+        isConnected: true
     };
 
     componentDidMount() {
