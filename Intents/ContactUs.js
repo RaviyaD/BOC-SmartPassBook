@@ -39,6 +39,17 @@ const ContactUs = ({navigation}) => {
                 <Text style={{color:'black', fontSize:35, marginTop:'10%', marginLeft:'25%' , fontWeight:'bold'}}>Get In Touch</Text>
                 <Image style={{ borderColor: '#000000', borderRadius: 30, width: 120, height: 120, marginLeft:'35%', borderWidth: 2}} source={require('../assets/tele.png')}/>
             </View>
+            <ImageBackground
+                source={require('../assets/main3.jpg')}
+                style={{
+                    flexDirection: 'column',
+                    position: 'absolute',
+                    marginTop: '30%',
+                    marginLeft: '2%',
+                    width:'100%',
+                    height:'100%'
+
+                }}>
             <View>
                 <View style={{marginLeft:'45%', marginTop:'15%'}}>
                     <Icon name="old-phone" size={25} color="#ff0055" />
@@ -84,23 +95,24 @@ const ContactUs = ({navigation}) => {
                     <Text style={{fontSize: 13,marginLeft:'35%'}}>Sri Lanka</Text>
                 </View>
             </View>
-            <View style={{flex: 1, flexDirection: 'column', justifyContent:'flex-end', marginTop:'6%', marginLeft:'85%'}}>
-                <TouchableOpacity onPress={() =>Linking.openURL("https://twitter.com/ebankofceylon?lang=en")}>
+            <View style={{flex: 1, flexDirection: 'row', justifyContent:'flex-end', marginLeft:'80%', marginTop:'10%', marginRight:'3%'}}>
+                <TouchableOpacity style={{ padding:4}} onPress={() =>Linking.openURL("https://twitter.com/ebankofceylon?lang=en")}>
                 <View style={{width:50, height:50, borderWidth:2,borderRadius: 30, marginTop:10}} >
                         <Image style={{width:47, height:47, borderWidth:3,borderRadius: 30}} source={require('../assets/twitter-logo.jpg')}/>
                 </View>
                  </TouchableOpacity>
-                <TouchableOpacity onPress={() =>Linking.openURL("https://www.facebook.com/BANKOFCEYLON/")}>
+                <TouchableOpacity style={{ padding:4}} onPress={() =>Linking.openURL("https://www.facebook.com/BANKOFCEYLON/")}>
                     <View style={{width: 50, height: 50, borderWidth:2, borderRadius: 30, marginTop:10}}>
                         <Image style={{width:47, height:47, borderWidth:3,borderRadius: 30}} source={require('../assets/facebook-logo.png')}/>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() =>Linking.openURL("https://www.instagram.com/bocofficial/?hl=en")}>
+                <TouchableOpacity style={{ padding:4}} onPress={() =>Linking.openURL("https://www.instagram.com/bocofficial/?hl=en")}>
                     <View style={{width: 50, height: 50, borderWidth:2, borderRadius: 30, marginTop:10, marginBottom:5}}>
                         <Image style={{width:46, height:45, borderWidth:3,borderRadius: 30}} source={require('../assets/insta-logo.jpg')}/>
                     </View>
                 </TouchableOpacity>
             </View>
+            </ImageBackground>
         </DrawerLayoutAndroid>
     );
 };
