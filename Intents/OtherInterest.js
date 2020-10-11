@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     divider: {
         borderWidth: 3,
         width: '90%',
-        borderColor: '#ffcc00',
+        borderColor: '#FDC723',
         marginLeft:'5%'
     },
     accNum: {
