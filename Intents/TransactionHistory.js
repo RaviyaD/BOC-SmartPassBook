@@ -141,7 +141,7 @@ class TransactionHistory extends Component {
 
                         />
                         <Row style={{marginTop: 5, top: 0}}>
-                            <Col style={{backgroundColor: '#faee52', height: 120}}>
+                            <Col style={{backgroundColor: '#FDC723', height: 120}}>
                                 <View style={{marginLeft: '5%'}}>
                                 <Button light bordered style={{
                                     left: 0,
@@ -269,12 +269,12 @@ class TransactionHistory extends Component {
                                                 right: 5,
                                                 top: 5,
                                                 position: 'absolute',
-                                                fontWeight: 'bold',
+                                                fontStyle: 'italic',
                                                 fontFamily: 'tahoma',
                                                 color: value.color
                                             }}>{value.amount}</Text>
                                             <Text style={{
-                                                fontSize: 20,
+                                                fontSize: 17,
                                                 left: 30,
                                                 top: 40,
                                                 position: 'absolute',
