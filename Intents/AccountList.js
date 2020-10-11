@@ -87,7 +87,7 @@ class AccountList extends Component {
                     <Text style={styles.accNameM}><Text style={styles.accName}>Ms. Dulmini</Text>   Dissanayaka</Text>
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
                             <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
+                                onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation,type:'Account',balance:this.state.list2.Balance,id:this.state.list2.ID,at:this.state.list2.Type})}>
                                 <View style={styles.accDetails}>
                                     <Text style={styles.accNum}>{this.state.list2? this.state.list2.Name: 'No name'}</Text>
                                     <Text style={styles.accNum}>{this.state.list2? this.state.list2.ID: '8010605'}</Text>
@@ -113,7 +113,7 @@ class AccountList extends Component {
                             </TouchableOpacity>
                     <Dash dashGap={3} style={{width: '90%', height: 1, flexDirection: 'row', marginLeft: '5%'}}/>
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation})}>
+                        onPress={() => this.props.navigation.navigate('TransactionHistory', {navigation: this.props.navigation,type:'Account1',balance:this.state.list1.Balance,id:this.state.list1.ID,at:this.state.list1.Type})}>
                         <View style={styles.accDetails}>
                             <Text style={styles.accNum}>{this.state.list1? this.state.list1.Name: 'No name'}</Text>
                             <Text style={styles.accNum}>{this.state.list1? this.state.list1.ID: '1020305'}</Text>
