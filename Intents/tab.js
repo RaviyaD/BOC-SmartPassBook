@@ -1,10 +1,20 @@
 import * as React from 'react';
-import {View, StyleSheet, Dimensions, Text} from 'react-native';
+import {View, StyleSheet, Dimensions, Text, ImageBackground} from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import OtherInterest from "./OtherInterest";
 
 
 const FirstRoute = () => (
+    <ImageBackground
+        source={require('../assets/main3.jpg')}
+        style={{
+            flexDirection: 'column',
+            position: 'absolute',
+            marginLeft: '2%',
+            width:'100%',
+            height:'100%'
+
+        }}>
     <View>
         <View>
             <Text style={styles.accName}>Ms Dulmini</Text>
@@ -33,6 +43,7 @@ const FirstRoute = () => (
         </View>
         <View style={styles.divider} />
     </View>
+    </ImageBackground>
 );
 
 const SecondRoute = () => (

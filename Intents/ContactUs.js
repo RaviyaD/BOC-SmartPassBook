@@ -85,7 +85,7 @@ const ContactUs = ({navigation}) => {
                         <Text style={{fontSize: 13,marginLeft:'35%'}}>Sri Lanka</Text>
                     </View>
                 </View>
-                <View style={{flex: 1, flexDirection: 'column', justifyContent:'flex-end', marginTop:'6%', marginLeft:'85%'}}>
+                <View style={{flex: 1, flexDirection: 'row', justifyContent:'flex-end', marginTop:'2%',marginLeft:'85%'}}>
                     <TouchableOpacity onPress={() =>Linking.openURL("https://twitter.com/ebankofceylon?lang=en")}>
                         <View style={{width:50, height:50, borderWidth:2,borderRadius: 30, marginTop:10}} >
                             <Image style={{width:47, height:47, borderWidth:3,borderRadius: 30}} source={require('../assets/twitter-logo.jpg')}/>

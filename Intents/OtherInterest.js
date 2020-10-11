@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import {View, StyleSheet, Dimensions, Text} from 'react-native';
+import {View, StyleSheet, Dimensions, Text, ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as firebase from "firebase";
 
@@ -50,6 +50,16 @@ export default class OtherInterest extends Component{
     }
     render(){
         return(
+            <ImageBackground
+                source={require('../assets/main3.jpg')}
+                style={{
+                    flexDirection: 'column',
+                    position: 'absolute',
+                    marginLeft: '2%',
+                    width:'100%',
+                    height:'100%'
+
+                }}>
             <View>
                 <View>
                     <View style={styles.rate}>
@@ -86,6 +96,7 @@ export default class OtherInterest extends Component{
                     </View>
                 </View>
             </View>
+            </ImageBackground>
         )
     }
 }
