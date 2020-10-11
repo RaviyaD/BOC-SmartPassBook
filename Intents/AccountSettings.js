@@ -5,6 +5,7 @@ import {
     Text, TouchableOpacity, TextInput, ImageBackground, StyleSheet, DrawerLayoutAndroid,
 } from 'react-native';
 import NavBar from "./NavBar";
+import * as firebase from "firebase";
 
 class AccountSettings extends Component {
     state = {
@@ -15,9 +16,14 @@ class AccountSettings extends Component {
     };
     toDashboard = () => {
         if (this.validateName()) {
-            this.props.navigation.navigate('Dashboard', {
-                newName: this.state.nickname,
-            });
+            firebase.database().ref('AccountList/' + 'Account').update({
+                Name:this.state.nickname
+            }).then(r =>{
+                this.props.navigation.navigate('Dashboard', {
+                    newName: this.state.nickname,
+                });
+            })
+
         }
     };
 
@@ -32,7 +38,7 @@ class AccountSettings extends Component {
         });
     };
     validateName = () => {
-        if (this.state.username !== '') {
+        if (this.state.nickname === '') {
             this.setState({
                 nicknameError: 'Enter a name...',
             });
