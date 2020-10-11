@@ -30,6 +30,7 @@
     "react-native-loading-spinner-overlay": "^1.1.0",
     "react-native-measureme": "0.0.2",
     "react-native-popup-dialog": "^0.18.3",
+    "react-native-push-notification-popup": "^1.6.0",
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.11.0",

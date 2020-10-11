@@ -7,6 +7,7 @@ import {
     Button, Dimensions, ScrollView
 } from 'react-native';
 import DatePicker from 'react-native-datepicker'
+import NotificationPopup from 'react-native-push-notification-popup';
 import NavBar from "./NavBar";
 
 
@@ -17,6 +18,20 @@ import {
 
 } from 'react-native-chart-kit'
 
+const renderCustomPopup = ({ appIconSource, appTitle, timeText, title, body }) => (
+    <View style={{backgroundColor: "white",borderRadius:5,borderWidth:1}}>
+        <View style={{backgroundColor: "#FFF",borderRadius:6,borderColor:"#808B96 ",borderWidth:0.8,height:50}}>
+            <Text  style={{marginLeft:"5%",marginTop:"5%", fontWeight: 'bold'}}>{appTitle}</Text>
+        </View>
+        <Text  style={{marginLeft:"5%",marginTop:"5%", fontWeight: 'bold'}}>
+            {title}
+        </Text>
+        <Text  style={{marginLeft:"5%",marginBottom:"5%"}}>
+            {body}
+        </Text>
+
+    </View>
+);
 
 
 export default class AccountAnalysis extends Component {
@@ -48,7 +63,17 @@ export default class AccountAnalysis extends Component {
         }
 
     }
+    componentDidMount() {
+        this.popup.show({
+            onPress: function() {console.log('Pressed')},
 
+            appTitle: 'BOC-Smart Passbook',
+            timeText: 'Now',
+            title: 'BOC E-Transfers',
+            body: 'Purchase R.2000 from Savings account\nREF-17565, Colombo, BOC',
+            slideOutTime: 10000
+        });
+    }
 
     changeDrawerPosition = () => {
         if (this.state.drawerPosition === 'left') {
@@ -77,9 +102,14 @@ export default class AccountAnalysis extends Component {
                 drawerWidth={300}
                 drawerPosition={this.state.drawerPosition}
                 renderNavigationView={() => this.navigationView()}>
-                <View style={styles.container}>
 
-                    <Text style={{color:'white', fontSize:30, marginTop:'20%', marginLeft:'5%'}}>Bank Statement Analysis</Text>
+                <View style={styles.container}>
+                    <NotificationPopup
+                        ref={ref => this.popup = ref}
+                        renderPopupContent={renderCustomPopup}
+                        shouldChildHandleResponderStart={true}
+                        shouldChildHandleResponderMove={true} />
+                    <Text style={{color:'white', fontSize:30, marginTop:'15%', marginLeft:'5%'}}>Bank Statement Analysis</Text>
                 </View>
                 <View style={styles.row}>
                     <DatePicker
